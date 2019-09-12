@@ -1,5 +1,3 @@
-const colors = require('vuetify/es5/util/colors').default
-
 module.exports = {
   mode: 'universal',
 
@@ -7,8 +5,7 @@ module.exports = {
    * Headers of the page
    */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s | Data Visualizer',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -18,7 +15,13 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Play:400,700'
+      }
+    ]
   },
 
   /*
@@ -34,7 +37,11 @@ module.exports = {
   /*
    * Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/perfect-scrollbar' },
+    { src: '~/plugins/clipboard' },
+    { src: '~/plugins/axios' }
+  ],
 
   /*
    * Nuxt.js dev-modules
@@ -50,7 +57,8 @@ module.exports = {
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/moment'
   ],
 
   /*
@@ -69,13 +77,13 @@ module.exports = {
       dark: true,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+          primary: '#ff7597',
+          accent: '#ff0266',
+          secondary: '#2a2a2a',
+          info: '#26a69a',
+          warning: '#ffc107',
+          error: '#dd2c00',
+          success: '#00e676'
         }
       }
     }

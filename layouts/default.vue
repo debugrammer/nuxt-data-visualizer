@@ -1,93 +1,100 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar :clipped-left="clipped" fixed app>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn icon @click.stop="miniVariant = !miniVariant">
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
+  <v-app id="inspire">
+    <app-drawer />
+    <app-toolbar />
     <v-content>
-      <v-container>
+      <!-- Page Header -->
+      <page-header />
+      <!-- Page Content -->
+      <div class="page-wrapper">
         <nuxt />
-      </v-container>
+      </div>
+      <!-- App Footer -->
+      <v-footer height="auto" class="pa-4 justify-center">
+        <span>
+          &copy;{{ $moment().format('YYYY') }} —
+          <strong>Joonsang.com</strong>
+        </span>
+      </v-footer>
     </v-content>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2019</span>
-    </v-footer>
+    <!-- Go to top -->
+    <app-fab />
+    <v-snackbar
+      v-model="snackbar.show"
+      :timeout="snackbarTimeout"
+      :color="snackbar.color"
+      bottom
+      right
+    >
+      {{ snackbar.text }}
+      <v-btn dark text icon @click.native="$store.dispatch('snackbar/hide')">
+        <v-icon>close</v-icon>
+      </v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import AppDrawer from '~/components/AppDrawer'
+import AppToolbar from '~/components/AppToolbar'
+import PageHeader from '~/components/PageHeader'
+import AppFab from '~/components/AppFab'
+
 export default {
-  data() {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
+  components: {
+    AppDrawer,
+    AppToolbar,
+    PageHeader,
+    AppFab
+  },
+  computed: {
+    ...mapGetters({
+      snackbarTimeout: 'snackbar/getTimeout',
+      snackbar: 'snackbar/getSnackbar'
+    })
+  },
+  mounted() {
+    if (process.browser) {
+      window.addEventListener('keydown', this.onGlobalKeydown)
+    }
+
+    if (this.$store.state.loggedIn === true) {
+      this.$store.dispatch('snackbar/success', { text: 'Login Success' })
+      this.$store.commit('setLoggedIn', false)
+    }
+  },
+  destroyed() {
+    if (process.browser) {
+      window.removeEventListener('keydown', this.onGlobalKeydown)
+    }
+  },
+  methods: {
+    onGlobalKeydown(event) {
+      if (event.target.tagName === 'INPUT') {
+        return
+      }
+
+      switch (event.key) {
+        case '[':
+          this.$store.dispatch('drawer/toggle')
+          break
+        case '/':
+          this.$store.dispatch('report/search/toggle')
+          break
+      }
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.setting-fab {
+  top: 50% !important;
+  right: 0;
+  border-radius: 0;
+}
+.page-wrapper {
+  min-height: calc(100vh - 64px - 51px - 81px);
+}
+</style>
