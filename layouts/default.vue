@@ -28,7 +28,7 @@
     >
       {{ snackbar.text }}
       <v-btn dark text icon @click.native="$store.dispatch('snackbar/hide')">
-        <v-icon>close</v-icon>
+        <v-icon>mdi-close</v-icon>
       </v-btn>
     </v-snackbar>
   </v-app>
@@ -58,11 +58,6 @@ export default {
     if (process.browser) {
       window.addEventListener('keydown', this.onGlobalKeydown)
     }
-
-    if (this.$store.state.loggedIn === true) {
-      this.$store.dispatch('snackbar/success', { text: 'Login Success' })
-      this.$store.commit('setLoggedIn', false)
-    }
   },
   destroyed() {
     if (process.browser) {
@@ -80,7 +75,7 @@ export default {
           this.$store.dispatch('drawer/toggle')
           break
         case '/':
-          this.$store.dispatch('report/search/toggle')
+          this.$store.dispatch('search/toggle')
           break
       }
     }

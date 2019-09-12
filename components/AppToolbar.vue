@@ -75,16 +75,8 @@ export default {
     }
   },
   methods: {
-    async logout() {
-      try {
-        await this.$store.dispatch('doLogout')
-        this.$store.commit('setLoggedOut', true)
-        this.$router.push('/login')
-      } catch (error) {
-        this.$store.dispatch('snackbar/error', {
-          text: `Failed to logout: ${error.message}`
-        })
-      }
+    logout() {
+      //
     },
     handleDrawerToggle() {
       this.$store.dispatch('drawer/toggle')

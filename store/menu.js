@@ -3,13 +3,13 @@ export const state = () => ({
     { header: 'My Awesome API Service' },
     {
       title: 'Dashboards',
-      group: 'api-dashboards',
+      group: 'dashboards',
       icon: 'mdi-view-dashboard-outline',
       items: [
         {
           name: 'api',
           title: 'API',
-          component: 'api-dashboards-api',
+          component: 'dashboards-api',
           pageShareEnabled: true,
           autoReloadEnabled: true
         }
