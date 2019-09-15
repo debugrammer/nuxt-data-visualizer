@@ -2,7 +2,7 @@
 Nuxt.js/Vuetify.js data visualization template inspired by [Vue Material Admin](https://github.com/tookit/vue-material-admin).
 
 ## Demo
-.
+http://visualizer.joonsang.com
 
 ## Build Setup
 ``` bash

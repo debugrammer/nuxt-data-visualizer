@@ -6,6 +6,13 @@
       </v-app-bar-nav-icon>
     </v-toolbar-title>
     <v-spacer />
+    <v-btn
+      href="https://github.com/debugrammer/nuxt-data-visualization-template"
+      target="_blank"
+      icon
+    >
+      <v-icon>fab fa-github</v-icon>
+    </v-btn>
     <v-btn icon @click="handleFullScreen()">
       <v-icon>mdi-fullscreen</v-icon>
     </v-btn>
