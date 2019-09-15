@@ -1,3 +1,21 @@
+// Set global constants by environments
+let webClientUrl = ''
+let apiClientUrl = ''
+let apiServerUrl = ''
+
+switch (process.env.NODE_ENV) {
+  case 'development':
+    webClientUrl = 'http://localhost:30000'
+    apiClientUrl = 'http://localhost:30000'
+    apiServerUrl = 'http://localhost:30000'
+    break
+  case 'production':
+    webClientUrl = 'http://visualizer.joonsang.com'
+    apiClientUrl = 'http://visualizer.joonsang.com'
+    apiServerUrl = 'http://localhost:30000'
+    break
+}
+
 module.exports = {
   mode: 'universal',
 
@@ -7,6 +25,59 @@ module.exports = {
   server: {
     port: 30000,
     host: '0.0.0.0'
+  },
+
+  /*
+   * Application global constants
+   */
+  env: {
+    WEB_CLIENT_URL: webClientUrl,
+    API_CLIENT_URL: apiClientUrl,
+    API_SERVER_URL: apiServerUrl,
+    COLOR_SET: {
+      MATERIAL: [
+        'rgba(244, 67, 54, 1.0)',
+        'rgba(233, 30, 99, 1.0)',
+        'rgba(156, 39, 176, 1.0)',
+        'rgba(103, 58, 183, 1.0)',
+        'rgba(63, 81, 181, 1.0)',
+        'rgba(33, 150, 243, 1.0)',
+        'rgba(3, 169, 244, 1.0)',
+        'rgba(0, 188, 212, 1.0)',
+        'rgba(0, 150, 136, 1.0)',
+        'rgba(76, 175, 80, 1.0)',
+        'rgba(139, 195, 74, 1.0)',
+        'rgba(205, 220, 57, 1.0)',
+        'rgba(255, 235, 59, 1.0)',
+        'rgba(255, 193, 7, 1.0)',
+        'rgba(255, 152, 0, 1.0)',
+        'rgba(255, 87, 34, 1.0)',
+        'rgba(121, 85, 72, 1.0)',
+        'rgba(158, 158, 158, 1.0)',
+        'rgba(96, 125, 139, 1.0)'
+      ],
+      MATERIAL_ALPHA: [
+        'rgba(244, 67, 54, 0.3)',
+        'rgba(233, 30, 99, 0.3)',
+        'rgba(156, 39, 176, 0.3)',
+        'rgba(103, 58, 183, 0.3)',
+        'rgba(63, 81, 181, 0.3)',
+        'rgba(33, 150, 243, 0.3)',
+        'rgba(3, 169, 244, 0.3)',
+        'rgba(0, 188, 212, 0.3)',
+        'rgba(0, 150, 136, 0.3)',
+        'rgba(76, 175, 80, 0.3)',
+        'rgba(139, 195, 74, 0.3)',
+        'rgba(205, 220, 57, 0.3)',
+        'rgba(255, 235, 59, 0.3)',
+        'rgba(255, 193, 7, 0.3)',
+        'rgba(255, 152, 0, 0.3)',
+        'rgba(255, 87, 34, 0.3)',
+        'rgba(121, 85, 72, 0.3)',
+        'rgba(158, 158, 158, 0.3)',
+        'rgba(96, 125, 139, 0.3)'
+      ]
+    }
   },
 
   /*
@@ -100,6 +171,8 @@ module.exports = {
       }
     }
   },
+
+  serverMiddleware: ['~/api/samples'],
 
   /*
    * Build configuration

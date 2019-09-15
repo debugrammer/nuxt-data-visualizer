@@ -10,7 +10,7 @@ export const state = () => ({
           name: 'api',
           title: 'API',
           component: 'dashboards-api',
-          pageShareEnabled: true,
+          copyLinkEnabled: true,
           autoReloadEnabled: true
         }
       ]

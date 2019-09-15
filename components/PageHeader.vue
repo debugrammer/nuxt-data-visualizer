@@ -19,11 +19,11 @@
       </template>
     </v-breadcrumbs>
     <v-spacer />
-    <template v-if="pageShareEnabled">
+    <template v-if="copyLinkEnabled">
       <div class="px-1">
         <v-tooltip left>
           <template v-slot:activator="{ on }">
-            <v-btn color="primary" outlined v-on="on" @click="sharePage">
+            <v-btn color="primary" outlined v-on="on" @click="copyLink()">
               <v-icon>mdi-link-variant</v-icon>
             </v-btn>
           </template>
@@ -68,7 +68,7 @@ export default {
       autoReload: false,
       reloadIconClass: 'text--secondary',
       autoReloadEnabled: false,
-      pageShareEnabled: false,
+      copyLinkEnabled: false,
       intervalTimer: null,
       secondsLeft: 0
     }
@@ -99,7 +99,7 @@ export default {
         if (item.name === this.$route.name) {
           this.setTitle(item.title)
           this.setAutoReloadEnabled(item.autoReloadEnabled)
-          this.setPageShareEnabled(item.pageShareEnabled)
+          this.setCopyLinkEnabled(item.copyLinkEnabled)
           breadcrumbs.push({ text: header, disabled: true })
           breadcrumbs.push({ text: item.title, disabled: true })
           break
@@ -116,7 +116,7 @@ export default {
 
           this.setTitle(child.title)
           this.setAutoReloadEnabled(child.autoReloadEnabled)
-          this.setPageShareEnabled(child.pageShareEnabled)
+          this.setCopyLinkEnabled(child.copyLinkEnabled)
           breadcrumbs.push({ text: header, disabled: true })
           breadcrumbs.push({ text: item.title })
           breadcrumbs.push({ text: child.title, disabled: true })
@@ -134,8 +134,8 @@ export default {
     setAutoReloadEnabled(autoReloadEnabled) {
       this.autoReloadEnabled = autoReloadEnabled
     },
-    setPageShareEnabled(pageShareEnabled) {
-      this.pageShareEnabled = pageShareEnabled
+    setCopyLinkEnabled(copyLinkEnabled) {
+      this.copyLinkEnabled = copyLinkEnabled
     },
     setAutoReload() {
       this.autoReload = !this.autoReload
@@ -176,8 +176,8 @@ export default {
         this.secondsLeft = secondsLeft
       }, 1000)
     },
-    sharePage() {
-      this.$store.commit('page-share/setAction', true)
+    copyLink() {
+      this.$store.commit('copy-link/setAction', true)
     }
   }
 }
