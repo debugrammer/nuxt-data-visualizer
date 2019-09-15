@@ -2,6 +2,14 @@ module.exports = {
   mode: 'universal',
 
   /*
+   * Server property
+   */
+  server: {
+    port: 30000,
+    host: '0.0.0.0'
+  },
+
+  /*
    * Headers of the page
    */
   head: {
