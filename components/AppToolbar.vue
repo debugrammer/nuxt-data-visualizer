@@ -68,15 +68,16 @@ export default {
       badge: 'notification/getUnreadCount'
     }),
     avatarColor() {
-      return 'red'
+      return 'cyan'
     },
     userInitial() {
-      return 'JP'
+      return 'DV'
     }
   },
   methods: {
     logout() {
-      //
+      this.$store.commit('setLoggedOut', true)
+      this.$router.push('/login')
     },
     handleDrawerToggle() {
       this.$store.dispatch('drawer/toggle')

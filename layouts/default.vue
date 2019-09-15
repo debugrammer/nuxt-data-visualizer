@@ -58,6 +58,11 @@ export default {
     if (process.browser) {
       window.addEventListener('keydown', this.onGlobalKeydown)
     }
+
+    if (this.$store.state.loggedIn === true) {
+      this.$store.dispatch('snackbar/success', { text: 'Login Success' })
+      this.$store.commit('setLoggedIn', false)
+    }
   },
   destroyed() {
     if (process.browser) {
