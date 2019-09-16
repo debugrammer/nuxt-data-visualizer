@@ -52,6 +52,65 @@ function getStatistics() {
   }
 }
 
+function getTerms(size, topValuesOnly, fields) {
+  const chance = new Chance()
+  const terms = []
+  let total = 0
+
+  for (let i = 0; i < size; i++) {
+    const labels = []
+
+    _.forEach(fields, (field) => {
+      switch (field) {
+        case 'request_path':
+          const requestPathSize = chance.integer({ min: 1, max: 3 })
+          let requestPath = ''
+
+          for (let j = 0; j < requestPathSize; j++) {
+            requestPath += `/${chance.word()}`
+          }
+
+          labels.push(requestPath)
+          break
+        case 'id':
+          const id = chance.string({ length: 15, alpha: true, numeric: true })
+          labels.push(id)
+          break
+      }
+    })
+
+    if (_.isEmpty(labels) === true) {
+      return false
+    }
+
+    const data = chance.integer({ min: 0, max: 10000 })
+    total += data
+
+    terms.push({
+      labels,
+      data,
+      percent: 0
+    })
+  }
+
+  if (topValuesOnly === false) {
+    const data = chance.integer({ min: 0, max: 10000 })
+    total += data
+
+    terms.push({
+      labels: ['Other'],
+      data,
+      percent: 0
+    })
+  }
+
+  _.forEach(terms, (result) => {
+    result.percent = result.data / total
+  })
+
+  return terms
+}
+
 function getHistograms(labels, interval, from, to) {
   const histograms = {
     labels,
@@ -95,6 +154,7 @@ function getLabeledStatistics(labels) {
 export default {
   getHistogram,
   getStatistics,
+  getTerms,
   getHistograms,
   getComparedStatistics,
   getLabeledStatistics
