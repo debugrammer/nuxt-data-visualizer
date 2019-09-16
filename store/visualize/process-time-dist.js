@@ -66,7 +66,8 @@ export const actions = {
       .get(API_URL, {
         params: {
           from: payload.from,
-          to: payload.to
+          to: payload.to,
+          client_id: payload.clientId
         }
       })
       .then((res) => {

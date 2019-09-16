@@ -1,7 +1,45 @@
 import express from 'express'
+import moment from 'moment'
 import randomizeUtils from '../util/randomize-utils'
+import visualizerUtils from '../util/visualizer-utils'
 
 const app = express()
+
+app.get('/histograms/process-times', (req, res) => {
+  let from = req.query.from
+  let to = req.query.to
+  const interval = req.query.interval
+
+  if (moment(from).isValid() === false) {
+    from = ''
+  }
+
+  if (moment(to).isValid() === false) {
+    to = ''
+  }
+
+  const fromDate = from ? moment(from) : moment()
+  const toDate = to ? moment(to) : moment()
+
+  if (toDate.diff(fromDate, 'days') > 31) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Date range is too wide.'
+    })
+  }
+
+  if (visualizerUtils.validateInterval(interval) === false) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Wrong interval type.'
+    })
+  }
+
+  const labels = ['0-50', '50-100', '100-200', '200-500', '500-1000', '1000-']
+  const histograms = randomizeUtils.getHistograms(labels, interval, from, to)
+
+  res.status(200).json(histograms)
+})
 
 app.get('/statistics/comparisons/period', (req, res) => {
   const comparedStatistics = randomizeUtils.getComparedStatistics()

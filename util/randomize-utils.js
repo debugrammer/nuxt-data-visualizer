@@ -3,18 +3,10 @@ import moment from 'moment'
 import _ from 'lodash'
 
 function getHistogram(interval, from, to) {
-  if (moment(from).isValid() === false) {
-    from = ''
-  }
-
-  if (moment(to).isValid() === false) {
-    to = ''
-  }
-
   const chance = new Chance()
   const nowDate = moment()
-  const fromDate = from ? moment(from) : moment()
-  const toDate = to ? moment(to) : moment()
+  const fromDate = moment(from)
+  const toDate = moment(to)
   const histogram = { histogram: [] }
 
   while (toDate.diff(fromDate, interval) > 0) {
@@ -30,9 +22,6 @@ function getHistogram(interval, from, to) {
         break
       case 'day':
         label = fromDate.format('YYYY-MM-DD')
-        break
-      case 'minute':
-        label = fromDate.format('YYYY-MM-DD HH:mm')
         break
     }
 
@@ -61,6 +50,19 @@ function getStatistics() {
     std_deviation: chance.floating({ min: 0, max: 1000 }),
     cardinality: chance.integer({ min: 0, max: 500 })
   }
+}
+
+function getHistograms(labels, interval, from, to) {
+  const histograms = {
+    labels,
+    histograms: []
+  }
+
+  _.forEach(labels, () => {
+    histograms.histograms.push(getHistogram(interval, from, to))
+  })
+
+  return histograms
 }
 
 function getComparedStatistics() {
@@ -93,6 +95,7 @@ function getLabeledStatistics(labels) {
 export default {
   getHistogram,
   getStatistics,
+  getHistograms,
   getComparedStatistics,
   getLabeledStatistics
 }

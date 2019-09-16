@@ -77,6 +77,13 @@
             </div>
           </v-widget>
         </v-flex>
+        <v-flex lg8 sm12 xs12>
+          <v-widget :loaded="lineChart1.loaded" title="Process Times">
+            <div slot="widget-content" class="text-center">
+              <line-chart :chart-data="lineChart1.chartData" />
+            </div>
+          </v-widget>
+        </v-flex>
         <v-flex lg12 sm12 xs12>
           <v-widget
             :loaded="barChart1.loaded"
@@ -102,6 +109,7 @@ import qs from 'qs'
 import VWidget from '~/components/VWidget'
 import SearchPanel from '~/components/widgets/expansion-panel/SearchPanel'
 import LinearStatistic from '~/components/widgets/statistics/LinearStatistic'
+import LineChart from '~/components/widgets/chart/line-chart'
 import BarChart from '~/components/widgets/chart/bar-chart'
 
 export default {
@@ -114,6 +122,7 @@ export default {
     VWidget,
     SearchPanel,
     LinearStatistic,
+    LineChart,
     BarChart
   },
   computed: {
@@ -126,6 +135,7 @@ export default {
       linearStat2: 'visualize/compare-client-creation/getLinearStat',
       linearStat3: 'visualize/compare-api-usage/getLinearStat',
       linearStat4: 'visualize/compare-scope-usage/getLinearStat',
+      lineChart1: 'visualize/process-times/getLineChart',
       barChart1: 'visualize/process-time-dist/getBarChart'
     })
   },
@@ -203,6 +213,7 @@ export default {
       this.loadLinearStat2()
       this.loadLinearStat3()
       this.loadLinearStat4()
+      this.loadLineChart1()
       this.loadBarChart1()
     },
     async loadLinearStat1() {
@@ -258,6 +269,19 @@ export default {
       } catch (error) {
         this.$store.dispatch('snackbar/error', {
           text: `Failed to load linear stat4 data: ${error.message}`
+        })
+      }
+    },
+    async loadLineChart1() {
+      try {
+        await this.$store.dispatch('visualize/process-times/fetchLineChart', {
+          from: this.searchData.from,
+          to: this.searchData.to,
+          clientId: this.searchData.clientId
+        })
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load line chart1 data: ${error.message}`
         })
       }
     },
