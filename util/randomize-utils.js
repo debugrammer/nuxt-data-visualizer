@@ -50,15 +50,15 @@ function getStatistics() {
   const chance = new Chance()
 
   return {
-    count: chance.integer({ min: 0, max: 50 }),
-    sum: chance.floating({ min: 0, max: 100 }),
-    sum_of_squares: chance.floating({ min: 0, max: 100 }),
-    mean: chance.floating({ min: 0, max: 100 }),
-    min: chance.floating({ min: 0, max: 100 }),
-    max: chance.floating({ min: 0, max: 100 }),
-    variance: chance.floating({ min: 0, max: 100 }),
-    std_deviation: chance.floating({ min: 0, max: 100 }),
-    cardinality: chance.integer({ min: 0, max: 50 })
+    count: chance.integer({ min: 0, max: 500 }),
+    sum: chance.floating({ min: 0, max: 1000 }),
+    sum_of_squares: chance.floating({ min: 0, max: 1000 }),
+    mean: chance.floating({ min: 0, max: 1000 }),
+    min: chance.floating({ min: 0, max: 500 }),
+    max: chance.floating({ min: 0, max: 1000 }),
+    variance: chance.floating({ min: 0, max: 1000 }),
+    std_deviation: chance.floating({ min: 0, max: 1000 }),
+    cardinality: chance.integer({ min: 0, max: 500 })
   }
 }
 
@@ -76,8 +76,44 @@ function getComparedStatistics() {
   }
 }
 
+function getLabeledStatistics() {
+  return {
+    labeled_statistics: [
+      { label: '0', statistics: getStatistics() },
+      { label: '0.02', statistics: getStatistics() },
+      { label: '0.04', statistics: getStatistics() },
+      { label: '0.06', statistics: getStatistics() },
+      { label: '0.08', statistics: getStatistics() },
+      { label: '0.1', statistics: getStatistics() },
+      { label: '0.2', statistics: getStatistics() },
+      { label: '0.3', statistics: getStatistics() },
+      { label: '0.4', statistics: getStatistics() },
+      { label: '0.5', statistics: getStatistics() },
+      { label: '0.6', statistics: getStatistics() },
+      { label: '0.7', statistics: getStatistics() },
+      { label: '0.8', statistics: getStatistics() },
+      { label: '0.9', statistics: getStatistics() },
+      { label: '1', statistics: getStatistics() },
+      { label: '2', statistics: getStatistics() },
+      { label: '3', statistics: getStatistics() },
+      { label: '4', statistics: getStatistics() },
+      { label: '5', statistics: getStatistics() },
+      { label: '6', statistics: getStatistics() },
+      { label: '7', statistics: getStatistics() },
+      { label: '8', statistics: getStatistics() },
+      { label: '9', statistics: getStatistics() },
+      { label: '10', statistics: getStatistics() },
+      { label: '15', statistics: getStatistics() },
+      { label: '20', statistics: getStatistics() },
+      { label: '25', statistics: getStatistics() },
+      { label: '30', statistics: getStatistics() }
+    ]
+  }
+}
+
 export default {
   getHistogram,
   getStatistics,
-  getComparedStatistics
+  getComparedStatistics,
+  getLabeledStatistics
 }

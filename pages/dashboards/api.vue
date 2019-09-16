@@ -41,6 +41,19 @@
             </div>
           </v-widget>
         </v-flex>
+        <v-flex lg12 sm12 xs12>
+          <v-widget
+            :loaded="barChart1.loaded"
+            title="Process Time Distribution"
+          >
+            <div slot="widget-content" class="text-center">
+              <bar-chart
+                :chart-data="barChart1.chartData"
+                :options="barChart1.options"
+              />
+            </div>
+          </v-widget>
+        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -48,10 +61,12 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import _ from 'lodash'
 import qs from 'qs'
 import VWidget from '~/components/VWidget'
 import SearchPanel from '~/components/widgets/expansion-panel/SearchPanel'
 import LinearStatistic from '~/components/widgets/statistics/LinearStatistic'
+import BarChart from '~/components/widgets/chart/bar-chart'
 
 export default {
   head() {
@@ -62,7 +77,8 @@ export default {
   components: {
     VWidget,
     SearchPanel,
-    LinearStatistic
+    LinearStatistic,
+    BarChart
   },
   computed: {
     ...mapGetters({
@@ -71,7 +87,8 @@ export default {
       searchAction: 'search/getAction',
       searchData: 'search/getClientIdSearchData',
       linearStat1: 'visualize/compare-client-usages/getLinearStat',
-      linearStat2: 'visualize/compare-client-creations/getLinearStat'
+      linearStat2: 'visualize/compare-client-creations/getLinearStat',
+      barChart1: 'visualize/process-time-dist/getBarChart'
     })
   },
   watch: {
@@ -146,6 +163,7 @@ export default {
     loadAllComponents() {
       this.loadLinearStat1()
       this.loadLinearStat2()
+      this.loadBarChart1()
     },
     async loadLinearStat1() {
       try {
@@ -174,6 +192,35 @@ export default {
           text: `Failed to load linear stat2 data: ${error.message}`
         })
       }
+    },
+    async loadBarChart1() {
+      try {
+        await this.$store.dispatch(
+          'visualize/process-time-dist/fetchBarChart',
+          {
+            from: this.searchData.from,
+            to: this.searchData.to,
+            clientId: this.searchData.clientId,
+            onClick: (e, item) => {
+              this.barChartClickHandler(e, item)
+            }
+          }
+        )
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load bar chart1 data: ${error.message}`
+        })
+      }
+    },
+    barChartClickHandler(e, item) {
+      if (_.isEmpty(item)) {
+        return
+      }
+
+      const label = this.barChart1.chartData.labels[item[0]._index]
+      const data = this.barChart1.chartData.datasets[0].data[item[0]._index]
+
+      console.log(label, data)
     },
     submit() {
       this.setSearchPanelExpanded(false)
