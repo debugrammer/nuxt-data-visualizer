@@ -8,7 +8,7 @@
         <v-flex lg3 sm6 xs12>
           <v-widget
             :loaded="linearStat1.loaded"
-            title="Client Usages"
+            title="Client Usage"
             content-class="pa-0"
           >
             <div slot="widget-content">
@@ -26,7 +26,7 @@
         <v-flex lg3 sm6 xs12>
           <v-widget
             :loaded="linearStat2.loaded"
-            title="Client Creations"
+            title="Client Creation"
             content-class="pa-0"
           >
             <div slot="widget-content">
@@ -37,6 +37,42 @@
                 :denominator-criteria="linearStat2.statData.denominatorCriteria"
                 :color="linearStat2.statData.color"
                 :percent="linearStat2.statData.percent"
+              />
+            </div>
+          </v-widget>
+        </v-flex>
+        <v-flex lg3 sm6 xs12>
+          <v-widget
+            :loaded="linearStat3.loaded"
+            title="API Usage"
+            content-class="pa-0"
+          >
+            <div slot="widget-content">
+              <linear-statistic
+                :numerator-value="linearStat3.statData.numeratorValue"
+                :denominator-value="linearStat3.statData.denominatorValue"
+                :numerator-criteria="linearStat3.statData.numeratorCriteria"
+                :denominator-criteria="linearStat3.statData.denominatorCriteria"
+                :color="linearStat3.statData.color"
+                :percent="linearStat3.statData.percent"
+              />
+            </div>
+          </v-widget>
+        </v-flex>
+        <v-flex lg3 sm6 xs12>
+          <v-widget
+            :loaded="linearStat4.loaded"
+            title="Scope Usage"
+            content-class="pa-0"
+          >
+            <div slot="widget-content">
+              <linear-statistic
+                :numerator-value="linearStat4.statData.numeratorValue"
+                :denominator-value="linearStat4.statData.denominatorValue"
+                :numerator-criteria="linearStat4.statData.numeratorCriteria"
+                :denominator-criteria="linearStat4.statData.denominatorCriteria"
+                :color="linearStat4.statData.color"
+                :percent="linearStat4.statData.percent"
               />
             </div>
           </v-widget>
@@ -86,8 +122,10 @@ export default {
       reload: 'auto-reload/shouldBeReloaded',
       searchAction: 'search/getAction',
       searchData: 'search/getClientIdSearchData',
-      linearStat1: 'visualize/compare-client-usages/getLinearStat',
-      linearStat2: 'visualize/compare-client-creations/getLinearStat',
+      linearStat1: 'visualize/compare-client-usage/getLinearStat',
+      linearStat2: 'visualize/compare-client-creation/getLinearStat',
+      linearStat3: 'visualize/compare-api-usage/getLinearStat',
+      linearStat4: 'visualize/compare-scope-usage/getLinearStat',
       barChart1: 'visualize/process-time-dist/getBarChart'
     })
   },
@@ -163,12 +201,14 @@ export default {
     loadAllComponents() {
       this.loadLinearStat1()
       this.loadLinearStat2()
+      this.loadLinearStat3()
+      this.loadLinearStat4()
       this.loadBarChart1()
     },
     async loadLinearStat1() {
       try {
         await this.$store.dispatch(
-          'visualize/compare-client-usages/fetchLinearStat',
+          'visualize/compare-client-usage/fetchLinearStat',
           {
             clientId: this.searchData.clientId
           }
@@ -182,7 +222,7 @@ export default {
     async loadLinearStat2() {
       try {
         await this.$store.dispatch(
-          'visualize/compare-client-creations/fetchLinearStat',
+          'visualize/compare-client-creation/fetchLinearStat',
           {
             clientId: this.searchData.clientId
           }
@@ -190,6 +230,34 @@ export default {
       } catch (error) {
         this.$store.dispatch('snackbar/error', {
           text: `Failed to load linear stat2 data: ${error.message}`
+        })
+      }
+    },
+    async loadLinearStat3() {
+      try {
+        await this.$store.dispatch(
+          'visualize/compare-api-usage/fetchLinearStat',
+          {
+            clientId: this.searchData.clientId
+          }
+        )
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load linear stat3 data: ${error.message}`
+        })
+      }
+    },
+    async loadLinearStat4() {
+      try {
+        await this.$store.dispatch(
+          'visualize/compare-scope-usage/fetchLinearStat',
+          {
+            clientId: this.searchData.clientId
+          }
+        )
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load linear stat4 data: ${error.message}`
         })
       }
     },

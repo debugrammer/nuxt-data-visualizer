@@ -1,5 +1,6 @@
 import Chance from 'chance'
 import moment from 'moment'
+import _ from 'lodash'
 
 function getHistogram(interval, from, to) {
   if (moment(from).isValid() === false) {
@@ -76,39 +77,17 @@ function getComparedStatistics() {
   }
 }
 
-function getLabeledStatistics() {
-  return {
-    labeled_statistics: [
-      { label: '0', statistics: getStatistics() },
-      { label: '0.02', statistics: getStatistics() },
-      { label: '0.04', statistics: getStatistics() },
-      { label: '0.06', statistics: getStatistics() },
-      { label: '0.08', statistics: getStatistics() },
-      { label: '0.1', statistics: getStatistics() },
-      { label: '0.2', statistics: getStatistics() },
-      { label: '0.3', statistics: getStatistics() },
-      { label: '0.4', statistics: getStatistics() },
-      { label: '0.5', statistics: getStatistics() },
-      { label: '0.6', statistics: getStatistics() },
-      { label: '0.7', statistics: getStatistics() },
-      { label: '0.8', statistics: getStatistics() },
-      { label: '0.9', statistics: getStatistics() },
-      { label: '1', statistics: getStatistics() },
-      { label: '2', statistics: getStatistics() },
-      { label: '3', statistics: getStatistics() },
-      { label: '4', statistics: getStatistics() },
-      { label: '5', statistics: getStatistics() },
-      { label: '6', statistics: getStatistics() },
-      { label: '7', statistics: getStatistics() },
-      { label: '8', statistics: getStatistics() },
-      { label: '9', statistics: getStatistics() },
-      { label: '10', statistics: getStatistics() },
-      { label: '15', statistics: getStatistics() },
-      { label: '20', statistics: getStatistics() },
-      { label: '25', statistics: getStatistics() },
-      { label: '30', statistics: getStatistics() }
-    ]
-  }
+function getLabeledStatistics(labels) {
+  const labeledStats = { labeled_statistics: [] }
+
+  _.forEach(labels, (label) => {
+    labeledStats.labeled_statistics.push({
+      label,
+      statistics: getStatistics()
+    })
+  })
+
+  return labeledStats
 }
 
 export default {
