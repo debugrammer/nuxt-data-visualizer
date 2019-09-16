@@ -72,7 +72,7 @@ function getTerms(size, topValuesOnly, fields) {
 
           labels.push(requestPath)
           break
-        case 'id':
+        case 'client_id':
           const id = chance.string({ length: 15, alpha: true, numeric: true })
           labels.push(id)
           break
