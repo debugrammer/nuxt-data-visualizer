@@ -1,4 +1,50 @@
 import Chance from 'chance'
+import moment from 'moment'
+
+function getHistogram(interval, from, to) {
+  if (moment(from).isValid() === false) {
+    from = ''
+  }
+
+  if (moment(to).isValid() === false) {
+    to = ''
+  }
+
+  const chance = new Chance()
+  const nowDate = moment()
+  const fromDate = from ? moment(from) : moment()
+  const toDate = to ? moment(to) : moment()
+  const histogram = { histogram: [] }
+
+  while (toDate.diff(fromDate, interval) > 0) {
+    if (nowDate.diff(fromDate) < 0) {
+      break
+    }
+
+    let label = ''
+
+    switch (interval) {
+      case 'hour':
+        label = fromDate.format('YYYY-MM-DD HH')
+        break
+      case 'day':
+        label = fromDate.format('YYYY-MM-DD')
+        break
+      case 'minute':
+        label = fromDate.format('YYYY-MM-DD HH:mm')
+        break
+    }
+
+    histogram.histogram.push({
+      label,
+      data: chance.integer({ min: 0, max: 10000 })
+    })
+
+    fromDate.add(1, interval)
+  }
+
+  return histogram
+}
 
 function getStatistics() {
   const chance = new Chance()
@@ -31,6 +77,7 @@ function getComparedStatistics() {
 }
 
 export default {
+  getHistogram,
   getStatistics,
   getComparedStatistics
 }
