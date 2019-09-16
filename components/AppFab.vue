@@ -8,7 +8,7 @@
       fixed
       bottom
       right
-      color="primary"
+      color="accent"
       @click="toTop"
     >
       <v-icon>mdi-chevron-up</v-icon>
