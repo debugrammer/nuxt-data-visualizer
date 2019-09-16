@@ -14,6 +14,11 @@ export default {
       default: () => ({
         responsive: true,
         maintainAspectRatio: false,
+        legend: {
+          labels: {
+            fontColor: 'white'
+          }
+        },
         tooltips: {
           mode: 'index',
           intersect: true
@@ -23,7 +28,14 @@ export default {
           intersect: true
         },
         scales: {
-          xAxes: [{ stacked: false }],
+          xAxes: [
+            {
+              stacked: false,
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ],
           yAxes: [
             {
               display: true,
@@ -31,6 +43,9 @@ export default {
               scaleLabel: {
                 display: true,
                 labelString: ''
+              },
+              ticks: {
+                fontColor: 'white'
               },
               id: 'y-axis-1'
             }

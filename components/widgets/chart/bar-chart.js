@@ -26,7 +26,14 @@ export default {
           intersect: true
         },
         scales: {
-          xAxes: [{ stacked: false }],
+          xAxes: [
+            {
+              stacked: false,
+              ticks: {
+                fontColor: 'white'
+              }
+            }
+          ],
           yAxes: [
             {
               stacked: false,
@@ -37,7 +44,8 @@ export default {
                 labelString: ''
               },
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                fontColor: 'white'
               },
               minBarLength: 5,
               id: 'y-axis-1'

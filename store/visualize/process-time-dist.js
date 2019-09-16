@@ -17,7 +17,14 @@ const BAR_CHART_OPTIONS = {
     intersect: true
   },
   scales: {
-    xAxes: [{ stacked: false }],
+    xAxes: [
+      {
+        stacked: false,
+        ticks: {
+          fontColor: 'white'
+        }
+      }
+    ],
     yAxes: [
       {
         display: true,
@@ -26,6 +33,11 @@ const BAR_CHART_OPTIONS = {
           display: true,
           labelString: ''
         },
+        ticks: {
+          beginAtZero: true,
+          fontColor: 'white'
+        },
+        minBarLength: 5,
         id: 'y-axis-1'
       }
     ]
