@@ -14,6 +14,11 @@ export default {
       default: () => ({
         responsive: true,
         maintainAspectRatio: false,
+        legend: {
+          labels: {
+            fontColor: 'white'
+          }
+        },
         tooltips: {
           mode: 'index',
           intersect: true

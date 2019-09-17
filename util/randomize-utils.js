@@ -54,7 +54,7 @@ function getStatistics() {
 
 function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
   const chance = new Chance()
-  let terms = []
+  const terms = { terms: [] }
   let total = 0
 
   for (let i = 0; i < size; i++) {
@@ -86,14 +86,14 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
     const data = chance.integer({ min: 0, max: 10000 })
     total += data
 
-    terms.push({
+    terms.terms.push({
       labels,
       data,
       percent: 0
     })
   }
 
-  terms = terms.sort((o1, o2) => {
+  terms.terms = terms.terms.sort((o1, o2) => {
     if (sort === 'asc') {
       return o1.data - o2.data
     }
@@ -105,14 +105,14 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
     const data = chance.integer({ min: 0, max: 10000 })
     total += data
 
-    terms.push({
+    terms.terms.push({
       labels: ['Other'],
       data,
       percent: 0
     })
   }
 
-  _.forEach(terms, (result) => {
+  _.forEach(terms.terms, (result) => {
     result.percent = result.data / total
   })
 

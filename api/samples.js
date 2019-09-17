@@ -83,6 +83,21 @@ app.get('/labeled-statistics/process-times', (req, res) => {
   res.status(200).json(labeledStatistics)
 })
 
+app.get('/terms/request-paths', (req, res) => {
+  const size = req.query.size
+
+  if (size > 20) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 20.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['request_path'], size)
+
+  res.status(200).json(terms)
+})
+
 export default {
   path: '/api/samples/v1',
   handler: app

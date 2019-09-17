@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import visualizerUtils from '~/util/visualizer-utils'
 
-const API_URL_PATTERN = `${process.env.API_CLIENT_URL}/api/samples/v1/histograms/process-times`
+const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/histograms/process-times`
 
 export const state = () => ({
   lineChart: {
@@ -30,7 +30,7 @@ export const actions = {
     commit('setLineChartLoaded', false)
 
     await this.$axios
-      .get(API_URL_PATTERN, {
+      .get(API_URL, {
         params: {
           interval: visualizerUtils.getInterval(payload.from, payload.to),
           from: payload.from,

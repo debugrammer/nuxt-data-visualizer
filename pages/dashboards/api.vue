@@ -84,6 +84,13 @@
             </div>
           </v-widget>
         </v-flex>
+        <v-flex lg4 sm12 xs12>
+          <v-widget :loaded="pieChart1.loaded" title="API Endpoints">
+            <div slot="widget-content" class="text-center">
+              <pie-chart :chart-data="pieChart1.chartData" />
+            </div>
+          </v-widget>
+        </v-flex>
         <v-flex lg12 sm12 xs12>
           <v-widget
             :loaded="barChart1.loaded"
@@ -110,6 +117,7 @@ import VWidget from '~/components/VWidget'
 import SearchPanel from '~/components/widgets/expansion-panel/SearchPanel'
 import LinearStatistic from '~/components/widgets/statistics/LinearStatistic'
 import LineChart from '~/components/widgets/chart/line-chart'
+import PieChart from '~/components/widgets/chart/pie-chart'
 import BarChart from '~/components/widgets/chart/bar-chart'
 
 export default {
@@ -123,6 +131,7 @@ export default {
     SearchPanel,
     LinearStatistic,
     LineChart,
+    PieChart,
     BarChart
   },
   computed: {
@@ -136,6 +145,7 @@ export default {
       linearStat3: 'visualize/compare-api-usage/getLinearStat',
       linearStat4: 'visualize/compare-scope-usage/getLinearStat',
       lineChart1: 'visualize/process-times/getLineChart',
+      pieChart1: 'visualize/api-endpoint-usage/getPieChart',
       barChart1: 'visualize/process-time-dist/getBarChart'
     })
   },
@@ -214,6 +224,7 @@ export default {
       this.loadLinearStat3()
       this.loadLinearStat4()
       this.loadLineChart1()
+      this.loadPieChart1()
       this.loadBarChart1()
     },
     async loadLinearStat1() {
@@ -284,6 +295,23 @@ export default {
           text: `Failed to load line chart1 data: ${error.message}`
         })
       }
+    },
+    async loadPieChart1() {
+      try {
+        await this.$store.dispatch(
+          'visualize/api-endpoint-usage/fetchPieChart',
+          {
+            size: 10,
+            clientId: this.searchData.clientId
+          }
+        )
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load pie chart1 data: ${error.message}`
+        })
+      }
+
+      console.log(this.pieChart1)
     },
     async loadBarChart1() {
       try {
