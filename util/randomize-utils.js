@@ -76,6 +76,10 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
           const id = chance.string({ length: 15, alpha: true, numeric: true })
           labels.push(id)
           break
+        case 'client_name':
+          const name = chance.name()
+          labels.push(name)
+          break
       }
     })
 

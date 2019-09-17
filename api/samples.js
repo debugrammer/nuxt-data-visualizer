@@ -98,6 +98,21 @@ app.get('/terms/request-paths', (req, res) => {
   res.status(200).json(terms)
 })
 
+app.get('/terms/clients', (req, res) => {
+  const size = req.query.size
+
+  if (size > 10) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 10.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['client_name'], size)
+
+  res.status(200).json(terms)
+})
+
 export default {
   path: '/api/samples/v1',
   handler: app

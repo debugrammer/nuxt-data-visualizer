@@ -26,7 +26,7 @@
         <v-flex lg3 sm6 xs12>
           <v-widget
             :loaded="linearStat2.loaded"
-            title="Client Creation"
+            title="Client Creations"
             content-class="pa-0"
           >
             <div slot="widget-content">
@@ -104,6 +104,28 @@
             </div>
           </v-widget>
         </v-flex>
+        <v-flex lg6 sm12 xs12>
+          <v-widget title="Authorization Code Requests" content-class="pa-0">
+            <div slot="widget-content">
+              <common-data-table
+                :headers="table1.headers"
+                :items="table1.tableData"
+                :loaded="table1.loaded"
+              />
+            </div>
+          </v-widget>
+        </v-flex>
+        <v-flex lg6 sm12 xs12>
+          <v-widget title="Client Credentials Requests" content-class="pa-0">
+            <div slot="widget-content">
+              <common-data-table
+                :headers="table2.headers"
+                :items="table2.tableData"
+                :loaded="table2.loaded"
+              />
+            </div>
+          </v-widget>
+        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -119,6 +141,7 @@ import LinearStatistic from '~/components/widgets/statistics/LinearStatistic'
 import LineChart from '~/components/widgets/chart/line-chart'
 import PieChart from '~/components/widgets/chart/pie-chart'
 import BarChart from '~/components/widgets/chart/bar-chart'
+import CommonDataTable from '~/components/widgets/table/CommonDataTable'
 
 export default {
   head() {
@@ -132,7 +155,8 @@ export default {
     LinearStatistic,
     LineChart,
     PieChart,
-    BarChart
+    BarChart,
+    CommonDataTable
   },
   computed: {
     ...mapGetters({
@@ -146,7 +170,9 @@ export default {
       linearStat4: 'visualize/compare-scope-usage/getLinearStat',
       lineChart1: 'visualize/process-times/getLineChart',
       pieChart1: 'visualize/api-endpoint-usage/getPieChart',
-      barChart1: 'visualize/process-time-dist/getBarChart'
+      barChart1: 'visualize/process-time-dist/getBarChart',
+      table1: 'visualize/ac-usage/getTable',
+      table2: 'visualize/cc-usage/getTable'
     })
   },
   watch: {
@@ -226,6 +252,8 @@ export default {
       this.loadLineChart1()
       this.loadPieChart1()
       this.loadBarChart1()
+      this.loadTable1()
+      this.loadTable2()
     },
     async loadLinearStat1() {
       try {
@@ -329,6 +357,30 @@ export default {
       } catch (error) {
         this.$store.dispatch('snackbar/error', {
           text: `Failed to load bar chart1 data: ${error.message}`
+        })
+      }
+    },
+    async loadTable1() {
+      try {
+        await this.$store.dispatch('visualize/ac-usage/fetchTable', {
+          size: 10,
+          clientId: this.searchData.clientId
+        })
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load table1 data: ${error.message}`
+        })
+      }
+    },
+    async loadTable2() {
+      try {
+        await this.$store.dispatch('visualize/cc-usage/fetchTable', {
+          size: 10,
+          clientId: this.searchData.clientId
+        })
+      } catch (error) {
+        this.$store.dispatch('snackbar/error', {
+          text: `Failed to load table2 data: ${error.message}`
         })
       }
     },

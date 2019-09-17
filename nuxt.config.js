@@ -112,7 +112,7 @@ module.exports = {
         '#fe4b83',
         '#f24591'
       ],
-      LIGHT_BLUE_GREEN_TWENTY: [
+      LIGHT_BLUE_GREEN: [
         '#48aacc',
         '#4dafcd',
         '#53b3cd',
@@ -133,38 +133,6 @@ module.exports = {
         '#aedfbb',
         '#b3e1bc',
         '#b8e3bd'
-      ],
-      LIGHT_BLUE_GREEN_THIRTY: [
-        '#2b8dbf',
-        '#2f91c1',
-        '#3396c3',
-        '#389ac5',
-        '#3c9fc7',
-        '#40a3c9',
-        '#45a7cb',
-        '#49abcc',
-        '#4eafcd',
-        '#53b3cd',
-        '#58b7cd',
-        '#5dbacc',
-        '#62bdcb',
-        '#67c1ca',
-        '#6dc4c9',
-        '#72c6c7',
-        '#77c9c5',
-        '#7dccc3',
-        '#82cec2',
-        '#88d0c0',
-        '#8dd2be',
-        '#92d5bd',
-        '#97d7bc',
-        '#9dd9bb',
-        '#a2dbba',
-        '#a7ddba',
-        '#abdeba',
-        '#b0e0bb',
-        '#b4e2bc',
-        '#b9e4be'
       ]
     }
   },
