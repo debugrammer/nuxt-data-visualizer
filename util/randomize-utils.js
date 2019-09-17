@@ -52,9 +52,9 @@ function getStatistics() {
   }
 }
 
-function getTerms(size, topValuesOnly, fields) {
+function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
   const chance = new Chance()
-  const terms = []
+  let terms = []
   let total = 0
 
   for (let i = 0; i < size; i++) {
@@ -92,6 +92,14 @@ function getTerms(size, topValuesOnly, fields) {
       percent: 0
     })
   }
+
+  terms = terms.sort((o1, o2) => {
+    if (sort === 'asc') {
+      return o1.data - o2.data
+    }
+
+    return o2.data - o1.data
+  })
 
   if (topValuesOnly === false) {
     const data = chance.integer({ min: 0, max: 10000 })
