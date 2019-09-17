@@ -18,7 +18,7 @@ function getHistogram(interval, from, to) {
 
     switch (interval) {
       case 'hour':
-        label = fromDate.format('YYYY-MM-DD HH')
+        label = fromDate.format('YYYY-MM-DD HH:00')
         break
       case 'day':
         label = fromDate.format('YYYY-MM-DD')
