@@ -14,6 +14,13 @@ export const state = () => ({
           autoReloadEnabled: true
         }
       ]
+    },
+    {
+      name: 'api-message',
+      title: 'API Message',
+      group: 'api-message',
+      icon: 'mdi-file-document-box-search-outline',
+      copyLinkEnabled: true
     }
   ]
 })

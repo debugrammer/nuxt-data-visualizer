@@ -5,6 +5,12 @@ import visualizerUtils from '../util/visualizer-utils'
 
 const app = express()
 
+app.get('/messages/:requestId', (req, res) => {
+  const messages = randomizeUtils.getMessages(req.params.requestId)
+
+  res.status(200).json(messages[0])
+})
+
 app.get('/histograms/process-times', (req, res) => {
   let from = req.query.from
   let to = req.query.to

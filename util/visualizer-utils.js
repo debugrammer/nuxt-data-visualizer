@@ -1,6 +1,21 @@
 import _ from 'lodash'
 import moment from 'moment'
 
+function getUrlPath(pattern, pathVariable) {
+  let urlPath = pattern
+
+  _.forEach(pathVariable, (value, key) => {
+    if (!value) {
+      urlPath = _.replace(urlPath, `/{${key}}`, '')
+      return true
+    }
+
+    urlPath = _.replace(urlPath, `{${key}}`, value)
+  })
+
+  return urlPath
+}
+
 function validateInterval(interval) {
   const VALID_INTERVALS = ['hour', 'day']
 
@@ -54,6 +69,7 @@ function percent(ratio, fractionDigits = 2) {
 }
 
 export default {
+  getUrlPath,
   validateInterval,
   getInterval,
   getColorSet,
