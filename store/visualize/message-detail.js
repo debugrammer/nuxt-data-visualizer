@@ -42,7 +42,7 @@ export const actions = {
               {
                 title: 'request_id',
                 content: res.data.request_id,
-                description: 'API Trace ID',
+                description: 'API request ID',
                 cardTitleClass: 'pt-0'
               },
               {
