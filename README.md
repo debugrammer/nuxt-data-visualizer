@@ -19,6 +19,10 @@ $ npm run start
 # build for production and launch PM2 server
 $ npm run build
 $ pm2 start
+
+# deploy
+$ pm2 delete data-visualizer-demo
+$ npm run deploy
 ```
 
 ## References
