@@ -1,6 +1,8 @@
+import visualizerUtils from '~/util/visualizer-utils'
+
 const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/statistics/comparisons/period`
 
-const LINEAR_STAT_COLOR = process.env.COLOR_SET.MATERIAL[3]
+const LINEAR_STAT_COLOR = visualizerUtils.getColor('MATERIAL', 3)
 
 export const state = () => ({
   linearStat: {
@@ -53,11 +55,10 @@ export const actions = {
           denominatorValue: comparedStatistics[1].cardinality,
           numeratorCriteria: '1 day',
           denominatorCriteria: '30 day',
-          percent: (
-            (comparedStatistics[0].cardinality /
-              comparedStatistics[1].cardinality) *
-            100
-          ).toFixed(2),
+          percent: visualizerUtils.percent(
+            comparedStatistics[0].cardinality /
+              comparedStatistics[1].cardinality
+          ),
           color: LINEAR_STAT_COLOR
         })
       })

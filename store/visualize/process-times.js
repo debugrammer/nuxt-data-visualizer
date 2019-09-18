@@ -68,8 +68,8 @@ export const actions = {
 
           dataSets.push({
             label: labelSet[key],
-            backgroundColor: process.env.COLOR_SET.MATERIAL_ALPHA[key],
-            borderColor: process.env.COLOR_SET.MATERIAL[key],
+            backgroundColor: visualizerUtils.getColor('MATERIAL_ALPHA', key),
+            borderColor: visualizerUtils.getColor('MATERIAL', key),
             borderWidth: 1,
             radius: 0,
             data: histogramData,

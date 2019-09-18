@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import visualizerUtils from '~/util/visualizer-utils'
 
 const API_URL_PATTERN = `${process.env.API_CLIENT_URL}/api/samples/v1/terms/clients`
 
@@ -61,20 +62,21 @@ export const actions = {
       .then((res) => {
         const tableData = []
         const terms = res.data.terms
+        const termsSize = _.size(terms)
 
         _.forEach(terms, (value, key) => {
           tableData.push({
             clientName: value.labels[1] || value.labels[0],
-            percent: (value.percent * 100).toFixed(2),
-            color:
-              key < 20 ? process.env.COLOR_SET.LIGHT_BLUE_GREEN[key] : 'grey',
-            count: Intl.NumberFormat('en-US').format(value.data)
+            percent: visualizerUtils.percent(value.ratio),
+            color: visualizerUtils.getColor(
+              'LIGHT_BLUE_GREEN',
+              key,
+              !payload.topValuesOnly,
+              termsSize
+            ),
+            count: visualizerUtils.numberFormat(value.data)
           })
         })
-
-        if (payload.topValuesOnly !== true) {
-          tableData[_.size(tableData) - 1].color = 'grey'
-        }
 
         commit('setTable', tableData)
       })

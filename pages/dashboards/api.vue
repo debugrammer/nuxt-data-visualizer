@@ -338,8 +338,6 @@ export default {
           text: `Failed to load pie chart1 data: ${error.message}`
         })
       }
-
-      console.log(this.pieChart1)
     },
     async loadBarChart1() {
       try {

@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import visualizerUtils from '~/util/visualizer-utils'
 
 const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/labeled-statistics/process-times`
 
@@ -97,7 +98,7 @@ export const actions = {
           datasets: [
             {
               label: 'Requests',
-              backgroundColor: process.env.COLOR_SET.RAINBOW,
+              backgroundColor: visualizerUtils.getColorSet('RAINBOW'),
               data: termsData,
               yAxisID: 'y-axis-1'
             }

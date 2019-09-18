@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import visualizerUtils from '~/util/visualizer-utils'
 
 const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/terms/request-paths`
 
@@ -40,14 +41,6 @@ export const actions = {
         const labels = []
         const dataList = []
         const terms = res.data.terms
-        let backgroundColor = process.env.COLOR_SET.MATERIAL
-
-        if (payload.topValuesOnly !== true) {
-          backgroundColor = _.dropRight(
-            process.env.COLOR_SET.MATERIAL,
-            process.env.COLOR_SET.MATERIAL.length - (_.size(terms) - 1)
-          )
-        }
 
         _.forEach(terms, (value) => {
           labels.push(value.labels[0])
@@ -58,7 +51,11 @@ export const actions = {
           labels,
           datasets: [
             {
-              backgroundColor,
+              backgroundColor: visualizerUtils.getColorSet(
+                'MATERIAL',
+                !payload.topValuesOnly,
+                _.size(terms)
+              ),
               borderWidth: 1,
               radius: 1,
               data: dataList

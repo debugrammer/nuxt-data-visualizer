@@ -93,7 +93,7 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
     terms.terms.push({
       labels,
       data,
-      percent: 0
+      ratio: 0
     })
   }
 
@@ -112,12 +112,12 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
     terms.terms.push({
       labels: ['Other'],
       data,
-      percent: 0
+      ratio: 0
     })
   }
 
   _.forEach(terms.terms, (result) => {
-    result.percent = result.data / total
+    result.ratio = result.data / total
   })
 
   return terms
