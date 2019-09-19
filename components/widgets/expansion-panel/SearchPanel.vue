@@ -5,10 +5,14 @@
         <v-expansion-panel-header>
           <template v-slot="{ open }">
             <v-row align="center" no-gutters>
-              <v-col cols="3" class="title font-weight-light">
+              <v-col :cols="titleCols" class="title font-weight-light">
                 {{ title }}
               </v-col>
-              <v-col v-if="!open" cols="9" class="text--secondary">
+              <v-col
+                v-if="searchConditions(open)"
+                cols="9"
+                class="text--secondary"
+              >
                 <v-fade-transition leave-absolute>
                   <v-row v-if="searchType === 'client-id'" no-gutters>
                     <v-col cols="4">
@@ -86,10 +90,18 @@ export default {
       get() {
         return this.$store.state.search.expanded
       }
+    },
+    titleCols() {
+      return this.$vuetify.breakpoint.xsOnly ? 12 : 3
     }
   },
   mounted() {
     this.show = true
+  },
+  methods: {
+    searchConditions(open) {
+      return !open && this.$vuetify.breakpoint.smAndUp
+    }
   }
 }
 </script>
