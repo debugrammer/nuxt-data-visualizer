@@ -7,8 +7,8 @@ module.exports = {
    * Server property
    */
   server: {
-    port: appEnv.port,
-    host: appEnv.host
+    port: appEnv.server.port,
+    host: appEnv.server.host
   },
 
   /*
