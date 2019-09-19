@@ -182,7 +182,8 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
+    '@nuxtjs/google-analytics'
   ],
 
   /*
@@ -190,6 +191,14 @@ module.exports = {
    * See https://axios.nuxtjs.org/options
    */
   axios: {},
+
+  /*
+   * Google Analytics module configuration
+   * https://github.com/nuxt-community/analytics-module
+   */
+  googleAnalytics: {
+    id: appEnv.googleAnalytics.id
+  },
 
   /*
    * vuetify module configuration
