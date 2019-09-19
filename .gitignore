@@ -92,3 +92,7 @@ sw.*
 
 # npm package lock file
 package-lock.json
+
+# Application environments
+app.env.development.json
+app.env.production.json

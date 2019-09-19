@@ -1,20 +1,4 @@
-// Set global constants by environments
-let webClientUrl = ''
-let apiClientUrl = ''
-let apiServerUrl = ''
-
-switch (process.env.NODE_ENV) {
-  case 'development':
-    webClientUrl = 'http://localhost:30000'
-    apiClientUrl = 'http://localhost:30000'
-    apiServerUrl = 'http://localhost:30000'
-    break
-  case 'production':
-    webClientUrl = 'http://visualizer.joonsang.com'
-    apiClientUrl = 'http://visualizer.joonsang.com'
-    apiServerUrl = 'http://localhost:30000'
-    break
-}
+const appEnv = require(`./app.env.${process.env.NODE_ENV}`)
 
 module.exports = {
   mode: 'universal',
@@ -23,17 +7,17 @@ module.exports = {
    * Server property
    */
   server: {
-    port: 30000,
-    host: '0.0.0.0'
+    port: appEnv.port,
+    host: appEnv.host
   },
 
   /*
    * Application global constants
    */
   env: {
-    WEB_CLIENT_URL: webClientUrl,
-    API_CLIENT_URL: apiClientUrl,
-    API_SERVER_URL: apiServerUrl,
+    WEB_CLIENT_URL: appEnv.webClientUrl,
+    API_CLIENT_URL: appEnv.apiClientUrl,
+    API_SERVER_URL: appEnv.apiServerUrl,
     COLOR_SET: {
       MATERIAL: [
         'rgba(244, 67, 54, 1.0)',
