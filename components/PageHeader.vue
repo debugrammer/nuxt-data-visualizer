@@ -5,19 +5,21 @@
         {{ title }}
       </h2>
     </div>
-    <v-breadcrumbs :items="breadcrumbs">
-      <template v-slot:divider>
-        <v-icon>mdi-chevron-right</v-icon>
-      </template>
-      <template v-slot:item="{ item }">
-        <v-icon v-if="item.icon" small>
-          {{ item.icon }}
-        </v-icon>
-        <a v-else :href="item.href" :class="[item.disabled && 'disabled']">
-          {{ item.text }}
-        </a>
-      </template>
-    </v-breadcrumbs>
+    <client-only>
+      <v-breadcrumbs :items="breadcrumbs">
+        <template v-slot:divider>
+          <v-icon>mdi-chevron-right</v-icon>
+        </template>
+        <template v-slot:item="{ item }">
+          <v-icon v-if="item.icon" :color="item.iconColor" small>
+            {{ item.icon }}
+          </v-icon>
+          <a v-else :href="item.href" :class="[item.disabled && 'disabled']">
+            {{ item.text }}
+          </a>
+        </template>
+      </v-breadcrumbs>
+    </client-only>
     <v-spacer />
     <template v-if="copyLinkEnabled">
       <div class="px-1">
@@ -122,6 +124,13 @@ export default {
           breadcrumbs.push({ text: child.title, disabled: true })
           break
         }
+      }
+
+      if (this.$vuetify.breakpoint.smAndDown) {
+        return [
+          breadcrumbs[0],
+          { icon: 'mdi-dots-horizontal-circle', iconColor: 'primary' }
+        ]
       }
 
       return breadcrumbs
