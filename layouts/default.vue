@@ -95,6 +95,6 @@ export default {
   border-radius: 0;
 }
 .page-wrapper {
-  min-height: calc(100vh - 64px - 51px - 81px);
+  min-height: calc(100vh - 64px - 51px - 73px);
 }
 </style>
