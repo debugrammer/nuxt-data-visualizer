@@ -16,6 +16,18 @@ export const state = () => ({
       ]
     },
     {
+      title: 'Analytics',
+      group: 'analytics',
+      icon: 'mdi-finance',
+      items: [
+        {
+          name: 'scopes',
+          title: 'Scopes',
+          component: 'analytics-scopes'
+        }
+      ]
+    },
+    {
       name: 'api-message',
       title: 'API Message',
       group: 'api-message',

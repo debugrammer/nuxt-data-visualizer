@@ -12,6 +12,7 @@ function getMessages(requestId) {
     messages.push({
       request_id:
         requestId || chance.string({ length: 15, alpha: true, numeric: true }),
+      scope: randomScope(),
       request_time: moment
         .unix(chance.timestamp())
         .format('YYYY-MM-DDTHH:mm:ssZ'),
@@ -103,6 +104,10 @@ function getTerms(fields, size, topValuesOnly = false, sort = 'desc') {
         case 'client_name':
           const name = chance.name()
           labels.push(name)
+          break
+        case 'scope':
+          const scope = randomScope()
+          labels.push(scope)
           break
       }
     })
@@ -197,6 +202,15 @@ function randomRequestPath() {
   }
 
   return requestPath
+}
+
+function randomScope() {
+  const SCOPE_PREFIX = 'visualizer'
+
+  const chance = new Chance()
+  const type = chance.pickone(['read', 'write'])
+
+  return `${SCOPE_PREFIX}.${type}_${chance.word()}`
 }
 
 function randomJson() {

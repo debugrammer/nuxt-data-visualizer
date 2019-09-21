@@ -1,6 +1,12 @@
 import _ from 'lodash'
 import moment from 'moment'
 
+function validateInterval(interval) {
+  const VALID_INTERVALS = ['hour', 'day']
+
+  return VALID_INTERVALS.includes(interval) === true
+}
+
 function getUrlPath(pattern, pathVariable) {
   let urlPath = pattern
 
@@ -16,10 +22,14 @@ function getUrlPath(pattern, pathVariable) {
   return urlPath
 }
 
-function validateInterval(interval) {
-  const VALID_INTERVALS = ['hour', 'day']
+function getFilterTags(array) {
+  const tags = _.compact(array)
 
-  return VALID_INTERVALS.includes(interval) === true
+  if (_.isEmpty(tags)) {
+    return ['All']
+  }
+
+  return tags
 }
 
 function getInterval(from, to) {
@@ -69,8 +79,9 @@ function percent(ratio, fractionDigits = 2) {
 }
 
 export default {
-  getUrlPath,
   validateInterval,
+  getFilterTags,
+  getUrlPath,
   getInterval,
   getColorSet,
   getColor,

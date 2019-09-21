@@ -46,6 +46,11 @@ export const actions = {
                 cardTitleClass: 'pt-0'
               },
               {
+                title: 'scope',
+                content: res.data.scope,
+                description: 'API scope'
+              },
+              {
                 title: 'request_time',
                 content: res.data.request_time,
                 description: 'API request time'

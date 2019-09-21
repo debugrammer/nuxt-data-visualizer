@@ -104,6 +104,21 @@ app.get('/terms/request-paths', (req, res) => {
   res.status(200).json(terms)
 })
 
+app.get('/terms/scopes/request-paths', (req, res) => {
+  const size = req.query.size
+
+  if (size > 10) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 10.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['request_path', 'scope'], size)
+
+  res.status(200).json(terms)
+})
+
 app.get('/terms/clients', (req, res) => {
   const size = req.query.size
 
@@ -115,6 +130,36 @@ app.get('/terms/clients', (req, res) => {
   }
 
   const terms = randomizeUtils.getTerms(['client_name'], size)
+
+  res.status(200).json(terms)
+})
+
+app.get('/terms/clients/client-names', (req, res) => {
+  const size = req.query.size
+
+  if (size > 10) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 10.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['client_id', 'client_name'], size)
+
+  res.status(200).json(terms)
+})
+
+app.get('/terms/scopes', (req, res) => {
+  const size = req.query.size
+
+  if (size > 10) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 10.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['scope'], size)
 
   res.status(200).json(terms)
 })
