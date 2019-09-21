@@ -1,6 +1,6 @@
 export const state = () => ({
   reload: false,
-  delaySeconds: 60
+  delaySeconds: 30
 })
 
 export const mutations = {
