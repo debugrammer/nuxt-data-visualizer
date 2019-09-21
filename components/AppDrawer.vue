@@ -134,6 +134,11 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.$vuetify.breakpoint.lgAndUp) {
+      this.expanded = true
+    }
+  },
   methods: {
     genChildTarget(item, subItem) {
       if (subItem.href) {
