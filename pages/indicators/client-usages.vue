@@ -1,13 +1,13 @@
 <template>
-    $END$
+  <div>Hello</div>
 </template>
 
 <script>
-  export default {
-    name: 'client-usages'
+export default {
+  head() {
+    return {
+      title: `Top Clients' Scope Usages - Indicators`
+    }
   }
+}
 </script>
-
-<style scoped>
-
-</style>
