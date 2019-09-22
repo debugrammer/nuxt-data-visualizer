@@ -28,6 +28,23 @@ export const state = () => ({
       ]
     },
     {
+      title: 'Indicators',
+      group: 'indicators',
+      icon: 'mdi-playlist-star',
+      items: [
+        {
+          name: 'client-usages',
+          title: `Top Clients' Scope Usages`,
+          component: 'indicators-client-usages'
+        },
+        {
+          name: 'client-process-times',
+          title: `Top Clients' Process Times`,
+          component: 'indicators-client-process-times'
+        }
+      ]
+    },
+    {
       title: 'Messages',
       group: 'messages',
       icon: 'mdi-file-document-box-search-outline',
