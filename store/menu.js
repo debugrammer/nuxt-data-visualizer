@@ -7,9 +7,9 @@ export const state = () => ({
       icon: 'mdi-view-dashboard-outline',
       items: [
         {
-          name: 'api',
-          title: 'API',
-          component: 'dashboards-api',
+          name: 'performance-overview',
+          title: 'Performance Overview',
+          component: 'dashboards-performance-overview',
           copyLinkEnabled: true,
           autoReloadEnabled: true
         }

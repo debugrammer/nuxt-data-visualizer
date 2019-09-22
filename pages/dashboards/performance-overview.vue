@@ -1,5 +1,5 @@
 <template>
-  <div id="page-dashboards-api">
+  <div id="page-dashboards-performance-overview">
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
         <v-flex xs12 mb-3>
@@ -146,7 +146,7 @@ import CommonDataTable from '~/components/widgets/table/CommonDataTable'
 export default {
   head() {
     return {
-      title: 'API - Dashboards'
+      title: 'Performance Overview - Dashboards'
     }
   },
   components: {
