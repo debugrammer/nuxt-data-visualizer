@@ -7,6 +7,9 @@ export const state = () => ({
     clientId: '',
     from: '',
     to: ''
+  },
+  datePickerData: {
+    date: ''
   }
 })
 
@@ -19,6 +22,9 @@ export const mutations = {
   },
   setClientIdSearchData(state, searchData) {
     state.clientIdSearchData = searchData
+  },
+  setDatePickerData(state, searchData) {
+    state.datePickerData = searchData
   }
 }
 
@@ -31,6 +37,9 @@ export const getters = {
   },
   getClientIdSearchData(state) {
     return state.clientIdSearchData
+  },
+  getDatePickerData(state) {
+    return state.datePickerData
   }
 }
 

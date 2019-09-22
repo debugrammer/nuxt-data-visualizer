@@ -28,6 +28,12 @@
                       {{ clientIdSearchData.to }}
                     </v-col>
                   </v-row>
+                  <v-row v-else-if="searchType === 'date-picker'" no-gutters>
+                    <v-col cols="12">
+                      <span class="overline">Date</span><br />
+                      {{ datePickerData.date }}
+                    </v-col>
+                  </v-row>
                 </v-fade-transition>
               </v-col>
             </v-row>
@@ -40,6 +46,7 @@
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <client-id-search-form v-if="searchType === 'client-id'" />
+          <date-picker-form v-else-if="searchType === 'date-picker'" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -49,13 +56,15 @@
 <script>
 import { mapGetters } from 'vuex'
 import ClientIdSearchForm from '~/components/widgets/form/ClientIdSearchForm'
+import DatePickerForm from '~/components/widgets/form/DatePickerForm'
 
-const SEARCH_TYPES = ['client-id']
+const SEARCH_TYPES = ['client-id', 'date-picker']
 
 export default {
   name: 'SearchPanel',
   components: {
-    ClientIdSearchForm
+    ClientIdSearchForm,
+    DatePickerForm
   },
   props: {
     title: {
@@ -81,7 +90,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      clientIdSearchData: 'search/getClientIdSearchData'
+      clientIdSearchData: 'search/getClientIdSearchData',
+      datePickerData: 'search/getDatePickerData'
     }),
     expanded: {
       set(expanded) {
