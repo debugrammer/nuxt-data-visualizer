@@ -1,5 +1,5 @@
 <template>
-  <div id="page-api-message">
+  <div id="page-messages-message-detail">
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
         <v-flex lg12 sm12 xs12 pb-1>
@@ -99,7 +99,7 @@ import MessageDialog from '~/components/widgets/dialog/MessageDialog'
 export default {
   head() {
     return {
-      title: 'API Message'
+      title: 'Message Detail - Messages'
     }
   },
   components: {

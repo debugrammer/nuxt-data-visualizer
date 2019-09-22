@@ -28,11 +28,22 @@ export const state = () => ({
       ]
     },
     {
-      name: 'api-message',
-      title: 'API Message',
-      group: 'api-message',
+      title: 'Messages',
+      group: 'messages',
       icon: 'mdi-file-document-box-search-outline',
-      copyLinkEnabled: true
+      items: [
+        {
+          name: 'message-list',
+          title: 'Message List',
+          component: 'messages-message-list'
+        },
+        {
+          name: 'message-detail',
+          title: 'Message Detail',
+          component: 'messages-message-detail',
+          copyLinkEnabled: true
+        }
+      ]
     }
   ]
 })
