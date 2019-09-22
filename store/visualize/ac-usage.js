@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import visualizerUtils from '~/util/visualizer-utils'
 
-const API_URL_PATTERN = `${process.env.API_CLIENT_URL}/api/samples/v1/terms/clients`
+const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/terms/clients`
 
 const TABLE_HEADERS = [
   {
@@ -51,7 +51,7 @@ export const actions = {
     commit('setTableLoaded', false)
 
     await this.$axios
-      .get(API_URL_PATTERN, {
+      .get(API_URL, {
         params: {
           size: payload.size,
           client_id: payload.clientId,

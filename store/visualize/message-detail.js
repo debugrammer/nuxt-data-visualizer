@@ -1,6 +1,6 @@
 import visualizerUtils from '~/util/visualizer-utils'
 
-const API_URL_PATTERN = `${process.env.API_CLIENT_URL}/api/samples/v1/messages/{requestId}`
+const API_URL = `${process.env.API_CLIENT_URL}/api/samples/v1/messages/{requestId}`
 
 export const state = () => ({
   list: {
@@ -28,7 +28,7 @@ export const actions = {
   async fetchList({ commit }, requestId) {
     commit('setListLoaded', false)
 
-    const apiUrl = visualizerUtils.getUrlPath(API_URL_PATTERN, {
+    const apiUrl = visualizerUtils.getUrlPath(API_URL, {
       requestId
     })
 

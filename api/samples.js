@@ -47,6 +47,23 @@ app.get('/histograms/process-times', (req, res) => {
   res.status(200).json(histograms)
 })
 
+app.get('/histograms/process-times/dates/:date', (req, res) => {
+  let date = req.params.date
+
+  if (moment(date).isValid() === false) {
+    date = ''
+  }
+
+  date = date ? moment(date) : moment()
+
+  const from = date.format('YYYY-MM-DD HH:mm:ss')
+  const to = date.add(1, 'day').format('YYYY-MM-DD HH:mm:ss')
+  const labels = ['0-500', '500-1000', '1000-']
+  const histograms = randomizeUtils.getHistograms(labels, 'hour', from, to)
+
+  res.status(200).json(histograms)
+})
+
 app.get('/statistics/comparisons/period', (req, res) => {
   const comparedStatistics = randomizeUtils.getComparedStatistics()
 
@@ -130,6 +147,21 @@ app.get('/terms/clients', (req, res) => {
   }
 
   const terms = randomizeUtils.getTerms(['client_name'], size)
+
+  res.status(200).json(terms)
+})
+
+app.get('/terms/clients/dates/:date', (req, res) => {
+  const size = req.query.size
+
+  if (size > 6) {
+    return res.status(400).json({
+      error_code: 'BAD_REQUEST',
+      error_message: 'Size cannot be greater than 6.'
+    })
+  }
+
+  const terms = randomizeUtils.getTerms(['client_name'], size, true)
 
   res.status(200).json(terms)
 })
