@@ -8,7 +8,10 @@ const BAR_CHART_OPTIONS = {
   responsive: true,
   maintainAspectRatio: false,
   legend: {
-    display: true
+    display: true,
+    labels: {
+      fontColor: 'white'
+    }
   },
   tooltips: {
     mode: 'index',
@@ -19,7 +22,14 @@ const BAR_CHART_OPTIONS = {
     intersect: true
   },
   scales: {
-    xAxes: [{ stacked: true }],
+    xAxes: [
+      {
+        stacked: true,
+        ticks: {
+          fontColor: 'white'
+        }
+      }
+    ],
     yAxes: [
       {
         stacked: true,
@@ -30,7 +40,8 @@ const BAR_CHART_OPTIONS = {
           labelString: ''
         },
         ticks: {
-          beginAtZero: true
+          beginAtZero: true,
+          fontColor: 'white'
         },
         id: 'y-axis-1'
       }
