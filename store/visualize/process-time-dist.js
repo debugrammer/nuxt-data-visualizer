@@ -38,7 +38,6 @@ const BAR_CHART_OPTIONS = {
           beginAtZero: true,
           fontColor: 'white'
         },
-        minBarLength: 5,
         id: 'y-axis-1'
       }
     ]
@@ -100,6 +99,7 @@ export const actions = {
               label: 'Requests',
               backgroundColor: visualizerUtils.getColorSet('RAINBOW'),
               data: termsData,
+              minBarLength: 5,
               yAxisID: 'y-axis-1'
             }
           ]

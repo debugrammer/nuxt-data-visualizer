@@ -47,7 +47,6 @@ export default {
                 beginAtZero: true,
                 fontColor: 'white'
               },
-              minBarLength: 5,
               id: 'y-axis-1'
             }
           ]

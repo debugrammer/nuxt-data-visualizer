@@ -32,7 +32,6 @@ const BAR_CHART_OPTIONS = {
         ticks: {
           beginAtZero: true
         },
-        minBarLength: 5,
         id: 'y-axis-1'
       }
     ]
@@ -174,6 +173,7 @@ export const actions = {
             borderWidth: 1,
             radius: 0,
             data: histogramData,
+            minBarLength: 5,
             yAxisID: 'y-axis-1'
           })
         })
