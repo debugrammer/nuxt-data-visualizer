@@ -113,11 +113,6 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  head() {
-    return {
-      title: 'Login'
-    }
-  },
   data() {
     return {
       loading: false,
@@ -181,6 +176,11 @@ export default {
         this.$router.push('/')
         this.loading = false
       }, 1000)
+    }
+  },
+  head() {
+    return {
+      title: 'Login'
     }
   },
   layout: 'empty'

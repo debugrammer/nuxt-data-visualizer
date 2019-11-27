@@ -125,11 +125,6 @@ import LineChart from '~/components/widgets/chart/line-chart'
 import CommonDataTable from '~/components/widgets/table/CommonDataTable'
 
 export default {
-  head() {
-    return {
-      title: 'Scopes - Analytics'
-    }
-  },
   components: {
     VWidget,
     SearchPanel,
@@ -259,6 +254,11 @@ export default {
       this.apiEndpoint = apiEndpoint
       this.loadTable3()
       this.loadLineChart1()
+    }
+  },
+  head() {
+    return {
+      title: 'Scopes - Analytics'
     }
   }
 }

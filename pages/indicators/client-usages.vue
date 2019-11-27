@@ -19,11 +19,6 @@ import { mapGetters } from 'vuex'
 import SearchPanel from '~/components/widgets/expansion-panel/SearchPanel'
 
 export default {
-  head() {
-    return {
-      title: `Top Clients' Scope Usages - Indicators`
-    }
-  },
   components: {
     SearchPanel
   },
@@ -59,6 +54,11 @@ export default {
     submit() {
       this.setSearchPanelExpanded(false)
       this.showResults = true
+    }
+  },
+  head() {
+    return {
+      title: `Top Clients' Scope Usages - Indicators`
     }
   }
 }

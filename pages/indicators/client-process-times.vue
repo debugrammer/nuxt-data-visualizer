@@ -38,11 +38,6 @@ import SearchPanel from '~/components/widgets/expansion-panel/SearchPanel'
 import BarChart from '~/components/widgets/chart/bar-chart'
 
 export default {
-  head() {
-    return {
-      title: `Top Clients' Process Times - Indicators`
-    }
-  },
   components: {
     VWidget,
     SearchPanel,
@@ -98,6 +93,11 @@ export default {
       this.setSearchPanelExpanded(false)
       this.showResults = true
       this.loadComponents()
+    }
+  },
+  head() {
+    return {
+      title: `Top Clients' Process Times - Indicators`
     }
   }
 }

@@ -23,11 +23,6 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: this.shortErrorText
-    }
-  },
   props: {
     error: {
       type: Object,
@@ -71,6 +66,11 @@ export default {
           this.errorText = 'Sorry, unexpected error occurred.'
           break
       }
+    }
+  },
+  head() {
+    return {
+      title: this.shortErrorText
     }
   },
   layout: 'empty'

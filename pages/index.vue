@@ -30,11 +30,6 @@
 import VWidget from '~/components/VWidget'
 
 export default {
-  head() {
-    return {
-      title: 'Home'
-    }
-  },
   components: {
     VWidget
   },
@@ -61,6 +56,11 @@ export default {
   },
   mounted() {
     this.show = true
+  },
+  head() {
+    return {
+      title: 'Home'
+    }
   }
 }
 </script>

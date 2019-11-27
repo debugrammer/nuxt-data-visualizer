@@ -97,14 +97,17 @@ import VJson from '~/components/VJson'
 import MessageDialog from '~/components/widgets/dialog/MessageDialog'
 
 export default {
-  head() {
-    return {
-      title: 'Message Detail - Messages'
-    }
-  },
   components: {
     VJson,
     MessageDialog
+  },
+  asyncData({ route }) {
+    return {
+      pageUrl: `${process.env.WEB_CLIENT_URL}${route.path}`,
+      params: {
+        requestId: route.query.request_id || ''
+      }
+    }
   },
   data() {
     return {
@@ -140,7 +143,7 @@ export default {
       const fullUrl = `${this.pageUrl}?${params}`
 
       this.$copyText(fullUrl).then(
-        (e) => {
+        () => {
           this.$store.dispatch('snackbar/success', {
             text: 'Link copied to clipboard'
           })
@@ -168,14 +171,6 @@ export default {
       }
 
       this.iconColor = 'primary'
-    }
-  },
-  asyncData({ route }) {
-    return {
-      pageUrl: `${process.env.WEB_CLIENT_URL}${route.path}`,
-      params: {
-        requestId: route.query.request_id || ''
-      }
     }
   },
   created() {
@@ -210,6 +205,11 @@ export default {
           text: `Failed to load list data: ${error.message}`
         })
       }
+    }
+  },
+  head() {
+    return {
+      title: 'Message Detail - Messages'
     }
   }
 }

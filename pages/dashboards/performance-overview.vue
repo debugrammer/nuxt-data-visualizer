@@ -144,11 +144,6 @@ import BarChart from '~/components/widgets/chart/bar-chart'
 import CommonDataTable from '~/components/widgets/table/CommonDataTable'
 
 export default {
-  head() {
-    return {
-      title: 'Performance Overview - Dashboards'
-    }
-  },
   components: {
     VWidget,
     SearchPanel,
@@ -157,6 +152,16 @@ export default {
     PieChart,
     BarChart,
     CommonDataTable
+  },
+  asyncData({ route }) {
+    return {
+      pageUrl: `${process.env.WEB_CLIENT_URL}${route.path}`,
+      params: {
+        clientId: route.query.client_id || '',
+        from: route.query.from || '',
+        to: route.query.to || ''
+      }
+    }
   },
   computed: {
     ...mapGetters({
@@ -189,7 +194,7 @@ export default {
       const fullUrl = `${this.pageUrl}?${params}`
 
       this.$copyText(fullUrl).then(
-        (e) => {
+        () => {
           this.$store.dispatch('snackbar/success', {
             text: 'Link copied to clipboard'
           })
@@ -218,16 +223,6 @@ export default {
 
       this.submit()
       this.$store.commit('search/setAction', false)
-    }
-  },
-  asyncData({ route }) {
-    return {
-      pageUrl: `${process.env.WEB_CLIENT_URL}${route.path}`,
-      params: {
-        clientId: route.query.client_id || '',
-        from: route.query.from || '',
-        to: route.query.to || ''
-      }
     }
   },
   created() {
@@ -395,6 +390,11 @@ export default {
     submit() {
       this.setSearchPanelExpanded(false)
       this.loadAllComponents()
+    }
+  },
+  head() {
+    return {
+      title: 'Performance Overview - Dashboards'
     }
   }
 }
