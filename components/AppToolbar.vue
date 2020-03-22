@@ -11,7 +11,7 @@
       target="_blank"
       icon
     >
-      <v-icon>mdi-github-circle</v-icon>
+      <v-icon>mdi-github</v-icon>
     </v-btn>
     <v-btn icon @click="handleFullScreen()">
       <v-icon>mdi-fullscreen</v-icon>
