@@ -14,15 +14,9 @@ export default {
   name: 'DatePickerForm',
   data() {
     return {
-      date: this.$moment()
-        .subtract(1, 'days')
-        .format('YYYY-MM-DD'),
-      minDate: this.$moment()
-        .subtract(14, 'days')
-        .format('YYYY-MM-DD'),
-      maxDate: this.$moment()
-        .subtract(1, 'days')
-        .format('YYYY-MM-DD')
+      date: this.$moment().subtract(1, 'days').format('YYYY-MM-DD'),
+      minDate: this.$moment().subtract(14, 'days').format('YYYY-MM-DD'),
+      maxDate: this.$moment().subtract(1, 'days').format('YYYY-MM-DD')
     }
   },
   methods: {

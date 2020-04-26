@@ -302,9 +302,7 @@ export default {
     resetAbsoluteDateSelect() {
       this.from.date = this.$moment().format('YYYY-MM-DD')
       this.from.time = '00:00'
-      this.to.date = this.$moment()
-        .add(1, 'days')
-        .format('YYYY-MM-DD')
+      this.to.date = this.$moment().add(1, 'days').format('YYYY-MM-DD')
       this.to.time = '00:00'
     },
     resetRelativeDateSelect() {
