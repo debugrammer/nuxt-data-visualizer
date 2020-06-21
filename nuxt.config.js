@@ -4,6 +4,11 @@ module.exports = {
   mode: 'universal',
 
   /*
+   * Nuxt.js Telemetry settings
+   */
+  telemetry: false,
+
+  /*
    * Server property
    */
   server: {
