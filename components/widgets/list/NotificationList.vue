@@ -2,9 +2,7 @@
   <v-card class="elevation-0">
     <v-app-bar flat dense color="transparent">
       <v-toolbar-title>
-        <h4 class="font-weight-light">
-          Notification
-        </h4>
+        <h4 class="font-weight-light">Notification</h4>
       </v-toolbar-title>
     </v-app-bar>
     <v-divider />
@@ -50,15 +48,11 @@
               You don't have any notifications yet
             </v-list-item-subtitle>
           </v-list-item-content>
-          <v-list-item-action class="caption">
-            -
-          </v-list-item-action>
+          <v-list-item-action class="caption">-</v-list-item-action>
         </v-list-item>
       </v-list>
       <v-divider />
-      <v-btn block text class="ma-0">
-        All
-      </v-btn>
+      <v-btn block text class="ma-0">All</v-btn>
       <v-divider />
     </v-card-text>
   </v-card>

@@ -4,9 +4,7 @@
       <div class="headline text--primary font-weight-light">
         {{ numeratorValue }}
       </div>
-      <div class="headline text--primary font-weight-light px-1">
-        /
-      </div>
+      <div class="headline text--primary font-weight-light px-1">/</div>
       <div class="headline text--primary">
         {{ denominatorValue }}
       </div>
@@ -15,9 +13,7 @@
       <span class="caption pl-1">
         {{ numeratorCriteria }}
       </span>
-      <span class="caption px-1">
-        /
-      </span>
+      <span class="caption px-1">/</span>
       <span class="caption">
         {{ denominatorCriteria }}
       </span>

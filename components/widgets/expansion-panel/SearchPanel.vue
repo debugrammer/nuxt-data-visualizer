@@ -39,9 +39,7 @@
             </v-row>
           </template>
           <template v-slot:actions>
-            <v-icon color="accent">
-              mdi-tune
-            </v-icon>
+            <v-icon color="accent">mdi-tune</v-icon>
           </template>
         </v-expansion-panel-header>
         <v-expansion-panel-content>

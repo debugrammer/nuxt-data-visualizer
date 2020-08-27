@@ -11,9 +11,7 @@
             {{ errorText }}
           </h2>
           <div>
-            <v-btn color="accent" to="/">
-              Go Home
-            </v-btn>
+            <v-btn color="accent" to="/">Go Home</v-btn>
           </div>
         </div>
       </v-layout>

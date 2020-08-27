@@ -159,9 +159,7 @@
       <v-btn class="mr-2" outlined color="primary" @click="submit">
         Submit
       </v-btn>
-      <v-btn class="ml-2" outlined @click="reset">
-        Clear
-      </v-btn>
+      <v-btn class="ml-2" outlined @click="reset">Clear</v-btn>
     </div>
   </v-form>
 </template>

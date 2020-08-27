@@ -1,9 +1,7 @@
 <template>
   <v-dialog v-model="dialog" max-width="500px">
     <v-card>
-      <v-card-title class="subtitle-1">
-        localhost
-      </v-card-title>
+      <v-card-title class="subtitle-1">localhost</v-card-title>
       <v-divider />
       <v-sheet
         color="accent"
@@ -20,9 +18,7 @@
         />
       </v-sheet>
       <v-card-text>
-        <div class="title font-weight-light mb-2">
-          Server Loads
-        </div>
+        <div class="title font-weight-light mb-2">Server Loads</div>
         <div class="subtitle-1 font-weight-light grey--text">
           Last 12 Hours Performance
         </div>
@@ -35,9 +31,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn color="primary" text @click="dialog = false">
-          Close
-        </v-btn>
+        <v-btn color="primary" text @click="dialog = false">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
