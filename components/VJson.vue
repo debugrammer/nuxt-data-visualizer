@@ -8,9 +8,6 @@
 <script>
 export default {
   name: 'VJson',
-  components: {
-    VueJsonPretty: () => import('vue-json-pretty')
-  },
   props: {
     data: {
       validator: (prop) =>

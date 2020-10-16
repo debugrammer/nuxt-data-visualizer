@@ -1,7 +1,7 @@
 const appEnv = require(`./app.env.${process.env.NODE_ENV}`)
 
 module.exports = {
-  mode: 'universal',
+  ssr: true,
 
   /*
    * Nuxt.js Telemetry settings
@@ -157,7 +157,7 @@ module.exports = {
   /*
    * Global CSS
    */
-  css: [],
+  css: ['vue-json-pretty/lib/styles.css'],
 
   /*
    * Plugins to load before mounting the App
@@ -165,7 +165,8 @@ module.exports = {
   plugins: [
     { src: '~/plugins/perfect-scrollbar' },
     { src: '~/plugins/clipboard' },
-    { src: '~/plugins/axios' }
+    { src: '~/plugins/axios' },
+    { src: '~/plugins/vue-json-pretty' }
   ],
 
   /*

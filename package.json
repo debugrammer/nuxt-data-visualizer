@@ -11,7 +11,7 @@
     "deploy": "npm install && npm run build && pm2 start"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/axios": "5.12.1",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/moment": "^1.6.1",
     "chance": "^1.1.7",
@@ -19,23 +19,23 @@
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "lodash": "^4.17.20",
-    "nuxt": "^2.14.3",
+    "nuxt": "^2.14.7",
     "qs": "^6.9.4",
     "vue-chartjs": "^3.5.1",
     "vue-clipboard2": "^0.3.1",
-    "vue-json-pretty": "^1.6.7",
+    "vue-json-pretty": "^1.7.0",
     "vue2-perfect-scrollbar": "^1.5.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",
-    "@nuxtjs/eslint-module": "^2.0.0",
+    "@nuxtjs/eslint-module": "^3.0.0",
     "@nuxtjs/vuetify": "^1.11.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.7.0",
-    "eslint-config-prettier": "^6.11.0",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-nuxt": "^1.0.0",
     "eslint-plugin-prettier": "^3.1.4",
-    "nodemon": "^2.0.4",
-    "prettier": "^2.1.1"
+    "nodemon": "^2.0.5",
+    "prettier": "^2.1.2"
   }
 }
