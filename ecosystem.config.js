@@ -11,7 +11,7 @@ module.exports = {
       script: '/home/jpark/nuxt-data-visualization-template/server/index.js',
       cmd: '/home/jpark/nuxt-data-visualization-template',
       interpreter: 'node',
-      interpreterArgs: '--max-old-space-size=128',
+      interpreterArgs: '--max-old-space-size=64',
 
       /*
        * Advanced features
