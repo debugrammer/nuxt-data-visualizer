@@ -11,12 +11,12 @@ module.exports = {
       script: '/home/jpark/nuxt-data-visualization-template/server/index.js',
       cmd: '/home/jpark/nuxt-data-visualization-template',
       interpreter: 'node',
-      interpreterArgs: '--max-old-space-size=64',
+      interpreterArgs: '--max-old-space-size=128',
 
       /*
        * Advanced features
        */
-      instances: '2',
+      instances: '1',
       exec_mode: 'cluster',
       watch: false,
       max_memory_restart: '128M',
