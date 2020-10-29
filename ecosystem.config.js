@@ -16,10 +16,10 @@ module.exports = {
       /*
        * Advanced features
        */
-      instances: '1',
+      instances: '2',
       exec_mode: 'cluster',
       watch: false,
-      max_memory_restart: '128M',
+      max_memory_restart: '160M',
 
       /*
        * Log files
