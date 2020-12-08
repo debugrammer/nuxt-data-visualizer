@@ -9,10 +9,10 @@
     hide-default-footer
     class="elevation-0"
   >
-    <template v-slot:progress>
+    <template #progress>
       <v-progress-linear height="2" color="accent" indeterminate />
     </template>
-    <template v-slot:item.percent="{ item }">
+    <template #[`item.percent`]="{ item }">
       <progress-percent :value="item.percent" :color="item.color" />
     </template>
   </v-data-table>

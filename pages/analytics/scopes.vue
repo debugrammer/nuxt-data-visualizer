@@ -22,10 +22,10 @@
                 hide-default-footer
                 class="elevation-0"
               >
-                <template v-slot:progress>
+                <template #progress>
                   <v-progress-linear height="2" color="accent" indeterminate />
                 </template>
-                <template v-slot:item="{ item }">
+                <template #item="{ item }">
                   <tr @click="submitScope(item.scope)">
                     <td>{{ item.scope }}</td>
                     <td class="text-left">
@@ -60,10 +60,10 @@
                 hide-default-footer
                 class="elevation-0"
               >
-                <template v-slot:progress>
+                <template #progress>
                   <v-progress-linear height="2" color="accent" indeterminate />
                 </template>
-                <template v-slot:item="{ item }">
+                <template #item="{ item }">
                   <tr @click="submitApiEndpoint(item.apiEndpoint)">
                     <td>{{ item.apiEndpoint }}</td>
                     <td>{{ item.scope }}</td>
@@ -137,6 +137,11 @@ export default {
       showResults: false,
       scope: '',
       apiEndpoint: ''
+    }
+  },
+  head() {
+    return {
+      title: 'Scopes - Analytics'
     }
   },
   computed: {
@@ -254,11 +259,6 @@ export default {
       this.apiEndpoint = apiEndpoint
       this.loadTable3()
       this.loadLineChart1()
-    }
-  },
-  head() {
-    return {
-      title: 'Scopes - Analytics'
     }
   }
 }

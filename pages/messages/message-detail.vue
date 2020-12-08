@@ -16,7 +16,7 @@
               @focus="focusIconColor()"
               @blur="blurIconColor()"
             >
-              <template v-slot:prepend-inner>
+              <template #prepend-inner>
                 <v-fade-transition leave-absolute>
                   <v-progress-circular
                     v-if="loading"
@@ -60,7 +60,7 @@
                   <div>
                     <div>
                       <v-tooltip color="accent" right>
-                        <template v-slot:activator="{ on }">
+                        <template #activator="{ on }">
                           <span class="subtitle-2" v-on="on">
                             {{ item.title }}
                           </span>
@@ -114,6 +114,11 @@ export default {
       valid: true,
       requestId: '',
       iconColor: ''
+    }
+  },
+  head() {
+    return {
+      title: 'Message Detail - Messages'
     }
   },
   computed: {
@@ -205,11 +210,6 @@ export default {
           text: `Failed to load list data: ${error.message}`
         })
       }
-    }
-  },
-  head() {
-    return {
-      title: 'Message Detail - Messages'
     }
   }
 }

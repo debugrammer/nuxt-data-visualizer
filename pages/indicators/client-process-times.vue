@@ -49,6 +49,11 @@ export default {
       size: 6
     }
   },
+  head() {
+    return {
+      title: `Top Clients' Process Times - Indicators`
+    }
+  },
   computed: {
     ...mapGetters({
       searchAction: 'search/getAction',
@@ -93,11 +98,6 @@ export default {
       this.setSearchPanelExpanded(false)
       this.showResults = true
       this.loadComponents()
-    }
-  },
-  head() {
-    return {
-      title: `Top Clients' Process Times - Indicators`
     }
   }
 }

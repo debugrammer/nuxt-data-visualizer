@@ -11,7 +11,7 @@
       <v-divider v-if="enableHeader" />
       <v-combobox
         v-if="enableChip"
-        v-model="chips"
+        v-model="selectedItems"
         placeholder="전체"
         prepend-inner-icon=""
         append-icon=""
@@ -24,7 +24,7 @@
         readonly
         hide-details
       >
-        <template v-slot:selection="data">
+        <template #selection="data">
           <v-chip outlined color="primary">
             {{ data.item }}
           </v-chip>
@@ -72,6 +72,11 @@ export default {
     loaded: {
       type: Boolean,
       default: true
+    }
+  },
+  computed: {
+    selectedItems() {
+      return this.chips
     }
   }
 }

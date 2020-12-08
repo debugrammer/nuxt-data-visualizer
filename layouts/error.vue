@@ -21,6 +21,7 @@
 
 <script>
 export default {
+  layout: 'empty',
   props: {
     error: {
       type: Object,
@@ -32,6 +33,11 @@ export default {
       textStatusCode: '',
       errorText: '',
       shortErrorText: ''
+    }
+  },
+  head() {
+    return {
+      title: this.shortErrorText
     }
   },
   computed: {
@@ -65,13 +71,7 @@ export default {
           break
       }
     }
-  },
-  head() {
-    return {
-      title: this.shortErrorText
-    }
-  },
-  layout: 'empty'
+  }
 }
 </script>
 

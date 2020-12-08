@@ -56,7 +56,7 @@
                 offset-y
                 max-width="290px"
               >
-                <template v-slot:activator="{ on }">
+                <template #activator="{ on }">
                   <v-text-field
                     v-model="from.date"
                     label="From Date"
@@ -83,7 +83,7 @@
                 max-width="290px"
                 min-width="290px"
               >
-                <template v-slot:activator="{ on }">
+                <template #activator="{ on }">
                   <v-text-field
                     v-model="from.time"
                     label="From Time"
@@ -108,7 +108,7 @@
                 offset-y
                 min-width="290px"
               >
-                <template v-slot:activator="{ on }">
+                <template #activator="{ on }">
                   <v-text-field
                     v-model="to.date"
                     label="To Date"
@@ -135,7 +135,7 @@
                 max-width="290px"
                 min-width="290px"
               >
-                <template v-slot:activator="{ on }">
+                <template #activator="{ on }">
                   <v-text-field
                     v-model="to.time"
                     label="To Time"

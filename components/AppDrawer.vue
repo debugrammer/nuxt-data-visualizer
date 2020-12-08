@@ -25,7 +25,7 @@
             append-icon="mdi-chevron-down"
             no-action
           >
-            <template v-slot:activator>
+            <template #activator>
               <v-list-item-content>
                 <v-list-item-title v-text="item.title" />
               </v-list-item-content>
@@ -38,7 +38,7 @@
                 :group="subItem.group"
                 sub-group
               >
-                <template v-slot:activator>
+                <template #activator>
                   <v-list-item-content>
                     <v-list-item-title v-text="subItem.title" />
                   </v-list-item-content>

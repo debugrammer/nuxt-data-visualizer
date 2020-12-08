@@ -38,6 +38,11 @@ export default {
       show: false
     }
   },
+  head() {
+    return {
+      title: 'Home'
+    }
+  },
   computed: {
     imageFlexSize() {
       switch (this.$vuetify.breakpoint.name) {
@@ -56,11 +61,6 @@ export default {
   },
   mounted() {
     this.show = true
-  },
-  head() {
-    return {
-      title: 'Home'
-    }
   }
 }
 </script>

@@ -1,4 +1,4 @@
-# nuxt-data-visualization-template
+# nuxt-data-visualizer
 Nuxt.js/Vuetify.js data visualization template inspired by [Vue Material Admin](https://github.com/tookit/vue-material-admin).
 
 ## Demo
@@ -33,4 +33,4 @@ $ npm run deploy
 * [Vue Material Admin](https://github.com/tookit/vue-material-admin)
 
 ## License
-[MIT](https://github.com/debugrammer/nuxt-data-visualization-template/blob/master/LICENSE)
+[MIT](https://github.com/debugrammer/nuxt-data-visualizer/blob/master/LICENSE)

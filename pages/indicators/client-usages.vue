@@ -28,6 +28,11 @@ export default {
       size: 10
     }
   },
+  head() {
+    return {
+      title: `Top Clients' Scope Usages - Indicators`
+    }
+  },
   computed: {
     ...mapGetters({
       searchAction: 'search/getAction',
@@ -54,11 +59,6 @@ export default {
     submit() {
       this.setSearchPanelExpanded(false)
       this.showResults = true
-    }
-  },
-  head() {
-    return {
-      title: `Top Clients' Scope Usages - Indicators`
     }
   }
 }

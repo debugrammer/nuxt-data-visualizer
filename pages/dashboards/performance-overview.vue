@@ -163,6 +163,11 @@ export default {
       }
     }
   },
+  head() {
+    return {
+      title: 'Performance Overview - Dashboards'
+    }
+  },
   computed: {
     ...mapGetters({
       copyLink: 'copy-link/getAction',
@@ -390,11 +395,6 @@ export default {
     submit() {
       this.setSearchPanelExpanded(false)
       this.loadAllComponents()
-    }
-  },
-  head() {
-    return {
-      title: 'Performance Overview - Dashboards'
     }
   }
 }

@@ -3,7 +3,7 @@
     <v-expansion-panels v-if="show" v-model="expanded" popout>
       <v-expansion-panel>
         <v-expansion-panel-header>
-          <template v-slot="{ open }">
+          <template #default="{ open }">
             <v-row align="center" no-gutters>
               <v-col :cols="titleCols" class="title font-weight-light">
                 {{ title }}
@@ -38,7 +38,7 @@
               </v-col>
             </v-row>
           </template>
-          <template v-slot:actions>
+          <template #actions>
             <v-icon color="accent">mdi-tune</v-icon>
           </template>
         </v-expansion-panel-header>

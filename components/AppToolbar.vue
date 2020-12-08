@@ -7,7 +7,7 @@
     </v-toolbar-title>
     <v-spacer />
     <v-btn
-      href="https://github.com/debugrammer/nuxt-data-visualization-template"
+      href="https://github.com/debugrammer/nuxt-data-visualizer"
       target="_blank"
       icon
     >
@@ -22,10 +22,10 @@
       :nudge-bottom="14"
       transition="scale-transition"
     >
-      <template v-slot:activator="{ on }">
+      <template #activator="{ on }">
         <v-btn icon text v-on="on">
           <v-badge color="red" overlap>
-            <template v-slot:badge>
+            <template #badge>
               <span v-if="badge > 0">{{ badge }}</span>
             </template>
             <v-icon>mdi-bell</v-icon>
@@ -40,7 +40,7 @@
       :nudge-bottom="10"
       transition="scale-transition"
     >
-      <template v-slot:activator="{ on }">
+      <template #activator="{ on }">
         <v-btn class="mr-0" icon text v-on="on">
           <v-avatar size="30px" :color="avatarColor">
             {{ userInitial }}

@@ -7,7 +7,7 @@
             <v-card class="elevation-1 pa-3">
               <v-card-actions class="pa-0">
                 <v-dialog v-model="dialog" width="1100px">
-                  <template v-slot:activator="{ on }">
+                  <template #activator="{ on }">
                     <v-btn text class="primary--text" v-on="on">
                       <v-icon class="pr-1">mdi-application</v-icon>
                       Supported Browsers
@@ -113,6 +113,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  layout: 'empty',
   data() {
     return {
       loading: false,
@@ -155,6 +156,11 @@ export default {
       ]
     }
   },
+  head() {
+    return {
+      title: 'Login'
+    }
+  },
   computed: {
     ...mapGetters({
       snackbarTimeout: 'snackbar/getTimeout',
@@ -177,13 +183,7 @@ export default {
         this.loading = false
       }, 1000)
     }
-  },
-  head() {
-    return {
-      title: 'Login'
-    }
-  },
-  layout: 'empty'
+  }
 }
 </script>
 

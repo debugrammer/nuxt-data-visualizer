@@ -8,8 +8,8 @@ module.exports = {
        * General
        */
       name: 'data-visualizer-demo',
-      script: '/home/jpark/nuxt-data-visualization-template/server/index.js',
-      cmd: '/home/jpark/nuxt-data-visualization-template',
+      script: '/home/jpark/nuxt-data-visualizer/server/index.js',
+      cmd: '/home/jpark/nuxt-data-visualizer',
       interpreter: 'node',
       interpreterArgs: '--max-old-space-size=128',
 

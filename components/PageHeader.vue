@@ -7,10 +7,10 @@
     </div>
     <client-only>
       <v-breadcrumbs :items="breadcrumbs">
-        <template v-slot:divider>
+        <template #divider>
           <v-icon>mdi-chevron-right</v-icon>
         </template>
-        <template v-slot:item="{ item }">
+        <template #item="{ item }">
           <v-icon v-if="item.icon" :color="item.iconColor" small>
             {{ item.icon }}
           </v-icon>
@@ -24,7 +24,7 @@
     <template v-if="copyLinkEnabled">
       <div class="px-1">
         <v-tooltip left>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-btn color="primary" outlined v-on="on" @click="copyLink()">
               <v-icon>mdi-link-variant</v-icon>
             </v-btn>
@@ -36,7 +36,7 @@
     <template v-if="autoReloadEnabled">
       <div class="px-1">
         <v-tooltip left>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-btn color="primary" outlined v-on="on" @click="setAutoReload">
               <v-icon color="primary" :class="reloadIconClass">
                 mdi-refresh

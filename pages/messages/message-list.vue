@@ -23,6 +23,11 @@ export default {
       showResults: false
     }
   },
+  head() {
+    return {
+      title: 'Message List - Messages'
+    }
+  },
   computed: {
     ...mapGetters({
       searchAction: 'search/getAction',
@@ -53,11 +58,6 @@ export default {
     submit() {
       this.setSearchPanelExpanded(false)
       this.showResults = true
-    }
-  },
-  head() {
-    return {
-      title: 'Message List - Messages'
     }
   }
 }
