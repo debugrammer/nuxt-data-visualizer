@@ -134,7 +134,7 @@ export default {
           support: true
         },
         {
-          icon: 'mdi-edge',
+          icon: 'mdi-microsoft-edge',
           browser: 'Edge',
           support: true
         },
@@ -149,7 +149,7 @@ export default {
           support: false
         },
         {
-          icon: 'mdi-internet-explorer',
+          icon: 'mdi-microsoft-internet-explorer',
           browser: 'IE9 / IE10 / IE11',
           support: false
         }
