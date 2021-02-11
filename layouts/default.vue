@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <app-drawer />
     <app-toolbar />
-    <v-content>
+    <v-main>
       <!-- Page Header -->
       <page-header />
       <!-- Page Content -->
@@ -16,7 +16,7 @@
           <strong>Joonsang.com</strong>
         </span>
       </v-footer>
-    </v-content>
+    </v-main>
     <!-- Go to top -->
     <app-fab />
     <v-snackbar
