@@ -102,9 +102,18 @@
       right
     >
       {{ snackbar.text }}
-      <v-btn dark text icon @click.native="$store.dispatch('snackbar/hide')">
-        <v-icon>mdi-close</v-icon>
-      </v-btn>
+
+      <template #action="{ attrs }">
+        <v-btn
+          dark
+          text
+          icon
+          v-bind="attrs"
+          @click="$store.dispatch('snackbar/hide')"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
     </v-snackbar>
   </v-app>
 </template>
